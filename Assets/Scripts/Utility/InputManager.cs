@@ -12,7 +12,7 @@ public class InputManager : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
     {
-        timer = Time.
+        
     }
 
     // Update is called once per frame

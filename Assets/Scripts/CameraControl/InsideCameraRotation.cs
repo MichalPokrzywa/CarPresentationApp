@@ -30,7 +30,6 @@ public class InsideCameraRotation : MonoBehaviour {
 			currentRotation.x = Mathf.Clamp(currentRotation.x, minYX, maxYX);
 			// Set the camera position relative to the car
 			transform.rotation = Quaternion.Euler(currentRotation.y, currentRotation.x, 0);
-			Cursor.lockState = CursorLockMode.Locked;
 		}
 	}
 
