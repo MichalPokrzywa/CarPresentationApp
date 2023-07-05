@@ -7,19 +7,23 @@ using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
 
 public class OutsideCameraRotation : MonoBehaviour {
 
-	public float distance = 3f;
 	public float rotationSpeed = 5f;
 	public Transform car;
 
 	private float polar;  // Polar angle
 	private float elevation;    // Azimuthal angle
 	private float radius;
-	public float minY = 0.5f;
-	public float maxY = 4f;
-	private Vector3 velocity;
-
+	public float minY = 0.2f;
+	public float maxY = 0.7f;
+	public float zoomSpeed = 50f;
+	private float zoomLevel = 1f;
+	private Vector3 velocity = Vector3.zero;
+	private Vector3 lastPosition;
+	private float lastPolar;
+	private bool flag = false;
+	Vector3 cartesianCoordsNextPosition;
 	void Start() {
-
+		lastPolar = 0;
 	}
 
 	void Update() {
@@ -36,27 +40,46 @@ public class OutsideCameraRotation : MonoBehaviour {
 		//	}
 		//}
 		// Update the angles based on input
-
+		
+		Vector3 relativePosition = transform.position - car.position;
+		lastPosition = transform.position;
+		
+		CartesianToSpherical(relativePosition, out radius, out polar, out elevation);
 		if (Input.GetMouseButton(0)) {
-			// Convert the camera's position to spherical coordinates
-			Vector3 relativePosition = transform.position - car.position;
-			CartesianToSpherical(relativePosition, out radius,out polar,out elevation);
-			// Update the angles based on mouse input
+			lastPolar = polar;
+			radius -= Input.GetAxis("Mouse ScrollWheel") * zoomSpeed * Time.deltaTime;
 			polar += Input.GetAxis("Mouse X") * rotationSpeed * Time.deltaTime;
-			elevation += Input.GetAxis("Mouse Y") * rotationSpeed * Time.deltaTime;
+			if (elevation < 0.6f && elevation > 0.25f) {
+				elevation += Input.GetAxis("Mouse Y") * rotationSpeed * Time.deltaTime;
+			}
+
+			radius = Mathf.Clamp(radius, 4.1f, 5.9f);
+			elevation = Mathf.Clamp(elevation, 0.25f, 0.6f);
+			Debug.Log($"mouse input: {Input.GetAxis("Mouse X")} | elevation:{elevation} | polar:{polar} | lastPolar:{lastPolar} | radius:{radius}");
 			// Convert spherical coordinates back to Cartesian coordinates
 			Vector3 cartesianCoords;
 			SphericalToCartesian(radius, polar, elevation, out cartesianCoords);
 			// Set the camera position relative to the car
 			transform.position = car.position + cartesianCoords;
-
-			// Clamp the final transform position's Y coordinate between the specified range
-			Vector3 finalPosition = transform.position;
-			finalPosition.y = Mathf.Clamp(finalPosition.y, minY, maxY);
-			transform.position = finalPosition;
+			//Debug.Log($"ACT POS: {transform.position} | LAST POS: {lastPosition}");
 		}
-
-		// Look at the car
+		if (Input.GetMouseButtonUp(0)) {
+			
+			float deltaPolar = polar - lastPolar;
+			float temp;
+			if (deltaPolar < 0) {
+				temp = polar + (deltaPolar * 10) * rotationSpeed;
+			}
+			else {
+				temp = polar - (deltaPolar * 10) * rotationSpeed;
+			}
+			SphericalToCartesian(radius, temp, elevation, out cartesianCoordsNextPosition);
+		}
+		if (lastPolar != 0 && !Input.GetMouseButton(0)) {
+			//smooth time jako input speed
+			transform.position = Vector3.SmoothDamp(transform.position, car.position + cartesianCoordsNextPosition, ref velocity, 1f);
+		}
+			// Look at the car
 		transform.LookAt(car);
 	}
 	public static void CartesianToSpherical(Vector3 cartCoords, out float outRadius, out float outPolar, out float outElevation) {

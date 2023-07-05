@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,29 +7,55 @@ using UnityEngine.UI;
 
 public class ButtonsManager : MonoBehaviour
 {
-	List<Button> buttons = new List<Button>();
-	
+	List<Toggle> buttons = new List<Toggle>();
 	int currentButton;
+
+	[SerializeField] Sprite backgroundImage;
 	// Start is called before the first frame update
     void Start() {
 	    currentButton = 0;
 	    foreach (Transform child in transform) {
-		    buttons.Add(child.GetComponent<Button>());
-		    child.GetComponent<Button>().onClick.AddListener(ChangeView);
-
+		    buttons.Add(child.GetComponent<Toggle>());
+		    child.GetComponent<Toggle>().onValueChanged.AddListener(delegate {
+			    ChangeView();
+		    });
+		    child.GetComponent<Toggle>().targetGraphic.GetComponent<Image>().sprite = backgroundImage;
+		    child.GetComponent<Toggle>().targetGraphic.GetComponent<Image>().color = new Color(1,1,1,0);
 		}
-		buttons[0].Select();
-    }
+	    buttons[0].Select();
+		buttons[0].targetGraphic.GetComponent<Image>().color = Color.white;
+	}
 
     void ChangeView() {
-	    for (int i = 0; i < buttons.Count; i++) {
+		bool flag = false;
+		for (int i = 0; i < buttons.Count; i++) {
 		    if (buttons[i].gameObject == EventSystem.current.currentSelectedGameObject) {
-				currentButton = i;
+			    if (i == currentButton) {
+					buttons[i].isOn = true;
+					break;
+			    }
+			    StartCoroutine(DoFadeDown());
+			    StartCoroutine(DoFadeUp(i));
+			    currentButton = i;
 				ViewGroupManager views = ViewGroupManager.instance;
 				views.ChangeView(i);
+				flag = true;
 				break;
 		    }
 	    }
+		if (flag == false) {
+		    buttons[currentButton].Select();
+		}
+    }
+
+    public IEnumerator DoFadeUp(int button) {
+	    buttons[button].targetGraphic.DOFade(255, 0.03f);
+	    yield return null;
+    }
+
+    public IEnumerator DoFadeDown() {
+	    buttons[currentButton].targetGraphic.DOFade(0, 0.03f);
+		yield return null;
     }
 
 }

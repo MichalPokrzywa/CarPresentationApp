@@ -3,11 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Localization;
 using UnityEngine.Localization.Settings;
+using UnityEngine.UI;
 
 public class LocaleSettings : MonoBehaviour {
 
 	private int currentLocale = 0;
-	private List<Locale> tableOfLocales = LocalizationSettings.AvailableLocales.Locales;
+	private Image flag;
+	private List<Locale> tableOfLocales;
+	[SerializeField] List<Sprite> localeFlag;
+
+	void Start() {
+		tableOfLocales = LocalizationSettings.AvailableLocales.Locales;
+		currentLocale = 0;
+		flag = GetComponent<Image>();
+		flag.sprite = localeFlag[currentLocale];
+		this.GetComponent<Button>().onClick.AddListener(ChangeLocale);
+		StartCoroutine(SetLocale(currentLocale));
+	}
+
 
 	void ChangeLocale() {
 
@@ -15,8 +28,8 @@ public class LocaleSettings : MonoBehaviour {
 		if (tableOfLocales.Count - 1 < currentLocale) {
 			currentLocale = 0;
 		}
-
-		SetLocale(currentLocale);
+		flag.sprite = localeFlag[currentLocale];
+		StartCoroutine(SetLocale(currentLocale));
 	}
 
 

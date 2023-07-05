@@ -25,7 +25,26 @@ public class InputManager : MonoBehaviour
 	    if (isIdle) {
 		    return 0.5f;
 	    }
-	    return Input.GetAxis("Mouse X");
+	    if (Input.GetMouseButton(0)) {
+		    return Input.GetAxis("Mouse X");
+	    }
+	    if (Input.touchCount > 0) {
+		    return Input.touches[0].deltaPosition.x;
+	    }
+	    return 0;
     }
+    public float GetYAxis() {
+	    if (isIdle) {
+		    return 0.5f;
+	    }
+	    if (Input.GetMouseButton(0)) {
+		    return Input.GetAxis("Mouse Y");
+	    }
+	    if (Input.touchCount > 0) {
+		    return Input.touches[0].deltaPosition.y;
+	    }
+	    return 0;
+    }
+
 
 }
