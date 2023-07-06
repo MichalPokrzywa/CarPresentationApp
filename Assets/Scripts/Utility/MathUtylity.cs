@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SphericalCoords
+public class MathUtylity
 {
 	public static void SphericalToCartesian(float radius, float polar, float elevation, out Vector3 outCart) {
 		float a = radius * Mathf.Cos(elevation);

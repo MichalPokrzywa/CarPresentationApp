@@ -7,7 +7,7 @@ public class ViewGroupManager : MonoBehaviour
 	private static ViewGroupManager _instance;
 	public static ViewGroupManager instance => _instance;
 
-	List<GameObject> views = new List<GameObject>();
+	readonly List<GameObject> views = new List<GameObject>();
 	int currentView;
 	void Awake() {
 		if (_instance != null && _instance != this) {

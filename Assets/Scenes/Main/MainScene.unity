@@ -2312,6 +2312,7 @@ GameObject:
   - component: {fileID: 1552813281}
   - component: {fileID: 1552813280}
   - component: {fileID: 1552813279}
+  - component: {fileID: 1552813283}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -2403,6 +2404,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!225 &1552813283
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1552813278}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1570030420
 GameObject:
   m_ObjectHideFlags: 0
@@ -2809,6 +2822,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1793882519}
+  - component: {fileID: 1793882520}
+  - component: {fileID: 1793882521}
+  - component: {fileID: 1793882522}
   m_Layer: 0
   m_Name: SceneManager
   m_TagString: Untagged
@@ -2831,6 +2847,48 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1793882520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1793882518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a679da2c88fe69648823ccb9c754560c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeToTimeout: 5
+  idle: 0
+--- !u!114 &1793882521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1793882518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9151fc62c5d229340867c84b70c22d72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvas: {fileID: 1552813278}
+  timeScale: 1
+--- !u!114 &1793882522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1793882518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3726e8c9b66f1d4bb898fc2d648720f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  simulateAxisValue: 0.2
+  isIdle: 0
 --- !u!1 &1814094804
 GameObject:
   m_ObjectHideFlags: 0

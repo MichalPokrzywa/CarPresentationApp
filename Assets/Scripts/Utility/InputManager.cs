@@ -4,26 +4,32 @@ using UnityEngine;
 
 public class InputManager : MonoBehaviour
 {
-	public float idleTimeThreshold = 60f; // Time threshold for considering the program idle (in seconds)
-	public float simulateAxisValue = 0.5f; // Value to simulate when the program is idle
-	private float timer;
-	private float idleTimer;
-	private bool isIdle;
-	// Start is called before the first frame update
-	void Start()
-    {
-        
-    }
+	private static InputManager _instance;
+	public static InputManager instance => _instance;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+	[SerializeField] float simulateAxisValue = 0.5f; // Value to simulate when the program is idle
+	public bool isIdle;
 
-    public float GetXAxis() {
+	void Awake() {
+		if (_instance != null && _instance != this) {
+			Destroy(gameObject);
+		}
+		else { 
+			_instance = this;
+		}
+	}
+
+	public bool DetectMovement() {
+		if (Input.GetMouseButton(0) || Input.touchCount > 0) {
+			return true;
+		}
+		return false;
+	}
+
+
+	public float GetXAxis() {
 	    if (isIdle) {
-		    return 0.5f;
+		    return simulateAxisValue;
 	    }
 	    if (Input.GetMouseButton(0)) {
 		    return Input.GetAxis("Mouse X");
@@ -34,9 +40,6 @@ public class InputManager : MonoBehaviour
 	    return 0;
     }
     public float GetYAxis() {
-	    if (isIdle) {
-		    return 0.5f;
-	    }
 	    if (Input.GetMouseButton(0)) {
 		    return Input.GetAxis("Mouse Y");
 	    }
@@ -46,5 +49,24 @@ public class InputManager : MonoBehaviour
 	    return 0;
     }
 
+    public float GetZoom() {
 
+	    if (Input.touchCount == 2) {
+		    Touch touchZero = Input.GetTouch(0);
+		    Touch touchOne = Input.GetTouch(1);
+
+		    Vector2 touchZeroPrevPos = touchZero.position - touchZero.deltaPosition;
+		    Vector2 touchOnePrevPos = touchOne.position - touchOne.deltaPosition;
+
+		    float prevMagnitude = (touchZeroPrevPos - touchOnePrevPos).magnitude;
+		    float currentMagnitude = (touchZero.position - touchOne.position).magnitude;
+
+		    float difference = currentMagnitude - prevMagnitude;
+		    return difference * 0.01f;
+	    }
+	    if (Input.GetMouseButton(0)) {
+		    return Input.GetAxis("Mouse ScrollWheel");
+	    }
+	    return 0;
+    }
 }
