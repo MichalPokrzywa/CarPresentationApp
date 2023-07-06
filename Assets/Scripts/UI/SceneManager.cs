@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class SceneManager : MonoBehaviour {
 
-
-
 	[SerializeField] float timeToTimeout = 60.0f;
 	public bool idle;
 	InputManager inputManager;

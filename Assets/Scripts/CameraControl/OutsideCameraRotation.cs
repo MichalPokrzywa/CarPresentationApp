@@ -41,7 +41,7 @@ public class OutsideCameraRotation : MonoBehaviour {
 		transform.LookAt(car);
 	}
 
-	private void CalculateNextPosition()
+	void CalculateNextPosition()
 	{ 
 		float deltaPolar = polar - lastPolar;
 		float temp;
@@ -56,7 +56,7 @@ public class OutsideCameraRotation : MonoBehaviour {
 		MathUtylity.SphericalToCartesian(radius, temp, elevation, out cartesianCoordsNextPosition);
 	}
 
-	private void RotateCameraAround()
+	void RotateCameraAround()
 	{
 		lastPolar = polar;
 		radius -= inputManager.GetZoom() * zoomSpeed * Time.deltaTime;
@@ -65,14 +65,10 @@ public class OutsideCameraRotation : MonoBehaviour {
 		{
 			elevation += inputManager.GetYAxis() * rotationSpeed * Time.deltaTime;
 		}
-
 		radius = Mathf.Clamp(radius, minZoom, maxZooms);
 		elevation = Mathf.Clamp(elevation, minY, maxY);
-		Debug.Log(
-			$"mouse input: {Input.GetAxis("Mouse X")} | elevation:{elevation} | polar:{polar} | lastPolar:{lastPolar} | radius:{radius}");
-		// Convert spherical coordinates back to Cartesian coordinates
+		//Debug.Log($"mouse input: {Input.GetAxis("Mouse X")} | elevation:{elevation} | polar:{polar} | lastPolar:{lastPolar} | radius:{radius}");
 		MathUtylity.SphericalToCartesian(radius, polar, elevation, out cartesianCoords);
-		// Set the camera position relative to the car
 		transform.position = car.position + cartesianCoords;
 	}
 }

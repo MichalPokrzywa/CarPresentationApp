@@ -17,10 +17,9 @@ public class LocaleSettings : MonoBehaviour {
 		currentLocale = 0;
 		flag = GetComponent<Image>();
 		flag.sprite = localeFlag[currentLocale];
-		this.GetComponent<Button>().onClick.AddListener(ChangeLocale);
+		GetComponent<Button>().onClick.AddListener(ChangeLocale);
 		StartCoroutine(SetLocale(currentLocale));
 	}
-
 
 	void ChangeLocale() {
 
@@ -32,14 +31,10 @@ public class LocaleSettings : MonoBehaviour {
 		StartCoroutine(SetLocale(currentLocale));
 	}
 
-
 	IEnumerator SetLocale(int localeID) {
 
 		yield return LocalizationSettings.InitializationOperation;
 		LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[localeID];
 
 	}
-
-
-
 }

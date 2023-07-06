@@ -48,12 +48,12 @@ public class ButtonsManager : MonoBehaviour
 		}
     }
 
-    public IEnumerator DoFadeUp(int button) {
+    IEnumerator DoFadeUp(int button) {
 	    buttons[button].targetGraphic.DOFade(255, 0.03f);
 	    yield return null;
     }
 
-    public IEnumerator DoFadeDown() {
+    IEnumerator DoFadeDown() {
 	    buttons[currentButton].targetGraphic.DOFade(0, 0.03f);
 		yield return null;
     }
