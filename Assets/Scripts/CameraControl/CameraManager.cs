@@ -5,10 +5,11 @@ using UnityEngine;
 public class CameraManager : MonoBehaviour {
 	int currentCamera = 0;
 	bool wait = false;
-	List<Transform> sceneCameras = new List<Transform>();
+	List<Transform> sceneCameras;
 	// Start is called before the first frame update
     void Start()
     {
+		sceneCameras = new List<Transform>();
 	    foreach (Transform child in transform) {
 		    sceneCameras.Add(child);
 	    }

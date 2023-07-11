@@ -31,6 +31,10 @@ public class FadeScreenAnimation : MonoBehaviour {
 	public void DoFadeDown() {
 		blackScreen.DOFade(0, timeScale).SetEase(Ease.OutSine);
 	}
+
+	public void DoFadeToValue(int value) {
+		blackScreen.DOFade(value, timeScale);
+	}
 	public IEnumerator Animation(bool isStart) {
 		float timer = 0f;
 		float duration = timeScale;
