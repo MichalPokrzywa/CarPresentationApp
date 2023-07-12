@@ -26,7 +26,6 @@ public class InputManager : MonoBehaviour
 		return false;
 	}
 
-
 	public float GetXAxis() {
 	    if (isIdle) {
 		    return simulateAxisValue;

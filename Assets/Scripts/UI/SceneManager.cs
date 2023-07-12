@@ -5,9 +5,10 @@ using UnityEngine;
 public class SceneManager : MonoBehaviour {
 
 	[SerializeField] float timeToTimeout = 60.0f;
-	public bool idle;
+	[SerializeField] public bool idle;
 	InputManager inputManager;
 	SceneManagerUI sceneManagerUI;
+	[SerializeField] GameObject splash;
 	float timeToIdle;
 	float timer;
 
@@ -19,7 +20,7 @@ public class SceneManager : MonoBehaviour {
 
 	void Update() {
 
-		if (inputManager.DetectMovement()) {
+		if (inputManager.DetectMovement() || splash.activeSelf) {
 			ResetTimer();
 		}
 		if (timer > timeToIdle) {

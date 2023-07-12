@@ -13,10 +13,7 @@ public class GalleryOverview : MonoBehaviour {
 	[SerializeField] float cellWidth = 385;
 	[SerializeField] float cellHight = 250;
     // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+
     void Awake() {
 	    if (_instance != null && _instance != this) {
 		    Destroy(gameObject);
@@ -25,17 +22,14 @@ public class GalleryOverview : MonoBehaviour {
 		    _instance = this;
 	    }
     }
-	public IEnumerator LoadImage(Texture2D photo) {
+	public IEnumerator LoadImage(Texture2D photo,int index) {
 
 		yield return Instantiate(tumbnail, imageContainer.transform);
 		Sprite sprite = Sprite.Create(photo, new Rect(0, 0, photo.width, photo.height), Vector2.one * 0.5f);
 		Debug.Log(sprite);
 		tumbnail.GetComponent<Image>().sprite = sprite;
-		tumbnail.GetComponent<Button>().onClick.AddListener(ShowPhotoChanger);
-		yield return tumbnail;
-    }
-
-    void ShowPhotoChanger() {
-
+		tumbnail.GetComponent<Tumbnail>().index = index;
+		
+		yield return null;
     }
 }
