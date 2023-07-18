@@ -38,27 +38,25 @@ public class PhotoChanger : MonoBehaviour
 
 	public void MoveForward() {
 		currentIndice++;
-		Debug.Log("ujonqefo");
 		if (currentIndice >= picturePath.Length) {
 			currentIndice = 0;
 		}
-		StartCoroutine(LoadImage(currentIndice));
+		LoadImage(currentIndice);
 		GC.Collect();
 	}
 	public void MoveBackward() {
 		currentIndice--;
-		Debug.Log("jnkk");
 		if (currentIndice < 0) {
 			currentIndice = picturePath.Length-1;
 		}
-		StartCoroutine(LoadImage(currentIndice));
+		LoadImage(currentIndice);
 		GC.Collect();
 	}
 
 	public void Show(int index) {
 		this.gameObject.SetActive(true);
 		currentIndice = index;
-		StartCoroutine(LoadImage(index));
+		LoadImage(index);
 	}
 
 	public void Close() {
@@ -70,24 +68,15 @@ public class PhotoChanger : MonoBehaviour
 	//	picturePath = Directory.GetFiles(GlobalVariables.dirPathHigh, "*.jpg");
 	//}
 
-	IEnumerator LoadImage(int indexFromFile) {
+	async void LoadImage(int indexFromFile) {
 		Image item = photo;
-		using (UnityWebRequest uwr = UnityWebRequestTexture.GetTexture(picturePath[indexFromFile])) {
-			yield return uwr.SendWebRequest();
-			if (item.sprite != null) {
-				Destroy(item.sprite);
-			}
-			if (uwr.result != UnityWebRequest.Result.Success) {
-				Debug.Log(uwr.error);
-			}
-			else {
-				texture = DownloadHandlerTexture.GetContent(uwr);
-			}
+		if (item.sprite != null) {
+			Destroy(item.sprite);
 		}
+		texture = await Request.GetAsyncTexture(picturePath[indexFromFile]);
 		int originalWidth = texture.width;
 		int originalHeight = texture.height;
 		Sprite sprite = Sprite.Create(texture, new Rect(0, 0, originalWidth, originalHeight), Vector2.one * 0.5f);
 		item.sprite = sprite;
-		yield return new WaitForSeconds(0.2f);
 	}
 }

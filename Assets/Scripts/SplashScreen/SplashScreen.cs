@@ -13,7 +13,7 @@ public class SplashScreen : MonoBehaviour {
 	CanvasGroup canvasGroup;
 	string filePath;
 	// Start is called before the first frame update
-	void Start() {
+	async void Start() {
 		canvasGroup = GetComponent<CanvasGroup>();
 		StartCoroutine(StartLoad());
 	}

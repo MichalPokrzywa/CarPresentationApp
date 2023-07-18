@@ -6,8 +6,5 @@ public static class GlobalVariables
 {
 	public static string dirPathHigh = Application.dataPath + "/GalleryPhotosHigh";
 	public static string dirPathLow = Application.dataPath + "/GalleryPhotosLow";
-
-
-
-
+	public static string dateConfig = Application.dataPath + "/jsonviewer.json";
 }

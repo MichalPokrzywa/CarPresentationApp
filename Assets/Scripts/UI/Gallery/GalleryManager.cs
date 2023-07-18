@@ -12,24 +12,17 @@ public class GalleryManager : MonoBehaviour {
 		photoFiles = System.IO.Directory.GetFiles(GlobalVariables.dirPathLow, "*.jpg");
 		gallery = GalleryOverview.instance;
 		photosList = new List<Texture2D>();
-		StartCoroutine(AddImages(photoFiles));
+		AddImages(photoFiles);
 	}
 
 	public Texture2D GetPhoto(int index) {
 		return photosList[index];
 	}
-	private IEnumerator AddImages(string[] fileNames) {
+	async void AddImages(string[] fileNames) {
 		for (int i = 0; i < fileNames.Length; i++) {
 			UnityWebRequest uwr = UnityWebRequestTexture.GetTexture(fileNames[i]);
-			Debug.Log(uwr.url);
-			yield return uwr.SendWebRequest();
-			if (uwr.result != UnityWebRequest.Result.Success) {
-				Debug.Log("Error .. " + uwr.error);
-			}
-			else {
-				photosList.Add(DownloadHandlerTexture.GetContent(uwr));
-				yield return StartCoroutine(gallery.LoadImage(photosList[i],i));
-			}
+			photosList.Add(await Request.GetAsyncTexture(fileNames[i]));
+			StartCoroutine(gallery.LoadImage(photosList[i],i));
 		}
 	}
 	//private IEnumerator Check() {
