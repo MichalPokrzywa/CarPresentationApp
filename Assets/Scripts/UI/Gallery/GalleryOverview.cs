@@ -24,7 +24,7 @@ public class GalleryOverview : MonoBehaviour {
     }
 	public IEnumerator LoadImage(Texture2D photo,int index) {
 
-		yield return Instantiate(tumbnail, imageContainer.transform);
+		Instantiate(tumbnail, imageContainer.transform);
 		Sprite sprite = Sprite.Create(photo, new Rect(0, 0, photo.width, photo.height), Vector2.one * 0.5f);
 		Debug.Log(sprite);
 		tumbnail.GetComponent<Image>().sprite = sprite;

@@ -34,7 +34,7 @@ public class SplashScreen : MonoBehaviour {
 		mySequence.Play();
 	}
 
-	Texture2D SmollTexture(Texture2D tex) {
+	Texture2D SmallTexture(Texture2D tex) {
 		Texture2D result = new Texture2D(385, 250, tex.format, true);
 		Color[] rpixels = result.GetPixels(0);
 		float incX = (1.0f / (float)385);
@@ -92,7 +92,7 @@ public class SplashScreen : MonoBehaviour {
 	IEnumerator SaveImage(Texture2D tex, string filename) {
 		byte[] bytes = tex.EncodeToJPG();
 		System.IO.File.WriteAllBytes(GlobalVariables.dirPathHigh + "/high" + filename, bytes);
-		bytes = SmollTexture(tex).EncodeToJPG();
+		bytes = SmallTexture(tex).EncodeToJPG();
 		System.IO.File.WriteAllBytes(GlobalVariables.dirPathLow + "/low" + filename, bytes);
 		yield return new WaitForSeconds(0.1f);
 	}
