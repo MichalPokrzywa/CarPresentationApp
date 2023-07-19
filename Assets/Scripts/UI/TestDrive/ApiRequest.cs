@@ -15,6 +15,10 @@ public class ApiRequest {
 		Root apiRoot = JsonConvert.DeserializeObject<Root>(await Request.GetAsyncText(publicUrl+"/json"));
 		return apiRoot?.dreamlo.leaderboard.entry;
 	}
+	public async UniTask<List<Entry>> GetAllRecordResultsAsc() {
+		Root apiRoot = JsonConvert.DeserializeObject<Root>(await Request.GetAsyncText(publicUrl + "/json-score-asc"));
+		return apiRoot?.dreamlo.leaderboard.entry;
+	}
 
 	public async UniTask<string> AddRecord(string name,string time,string date) {
 		return await Request.PostAsync($"{privateUrl}/add/{name}/{time}/0/{date}","body");

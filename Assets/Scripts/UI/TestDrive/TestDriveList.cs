@@ -22,7 +22,8 @@ public class TestDriveList : MonoBehaviour {
 
 	async Task CreateRecords()
 	{
-		List<Entry> entries = await api.GetAllRecordResults();
+		List<Entry> entries = await api.GetAllRecordResultsAsc();
+		
 		foreach (Entry entry in entries)
 		{
 			StartCoroutine(CreateEntry(entry,dateDropdown.value));

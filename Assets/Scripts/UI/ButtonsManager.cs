@@ -17,7 +17,7 @@ public class ButtonsManager : MonoBehaviour
 	    foreach (Transform child in transform) {
 		    buttons.Add(child.GetComponent<Toggle>());
 		    child.GetComponent<Toggle>().onValueChanged.AddListener(delegate {
-			    ChangeView();
+			    StartCoroutine(ChangeView());
 		    });
 		    child.GetComponent<Toggle>().targetGraphic.GetComponent<Image>().sprite = backgroundImage;
 		    child.GetComponent<Toggle>().targetGraphic.GetComponent<Image>().color = new Color(1,1,1,0);
@@ -26,7 +26,7 @@ public class ButtonsManager : MonoBehaviour
 		buttons[0].targetGraphic.GetComponent<Image>().color = Color.white;
 	}
 
-    void ChangeView() {
+    IEnumerator ChangeView() {
 		bool flag = false;
 		for (int i = 0; i < buttons.Count; i++) {
 		    if (buttons[i].gameObject == EventSystem.current.currentSelectedGameObject) {
@@ -34,11 +34,11 @@ public class ButtonsManager : MonoBehaviour
 					buttons[i].isOn = true;
 					break;
 			    }
-			    StartCoroutine(DoFadeDown());
-			    StartCoroutine(DoFadeUp(i));
+			    yield return StartCoroutine(DoFadeDown());
+			    yield return StartCoroutine(DoFadeUp(i));
 			    currentButton = i;
 				ViewGroupManager views = ViewGroupManager.instance;
-				views.ChangeView(i);
+				yield return StartCoroutine(views.ChangeView(i));
 				flag = true;
 				break;
 		    }

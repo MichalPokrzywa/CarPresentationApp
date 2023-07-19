@@ -26,9 +26,13 @@ public class ViewGroupManager : MonoBehaviour
 		views[0].SetActive(true);
 	}
 
-	public void ChangeView(int newView) {
+	public IEnumerator ChangeView(int newView) {
 		views[currentView].SetActive(false);
+		StartCoroutine(views[currentView].GetComponent<ViewAnimation>().MakeAnimationDown(currentView));
 		views[newView].SetActive(true);
+		StartCoroutine(views[newView].GetComponent<ViewAnimation>().MakeAnimationUp(newView));
 		currentView = newView;
+		yield return null;
 	}
+
 }
