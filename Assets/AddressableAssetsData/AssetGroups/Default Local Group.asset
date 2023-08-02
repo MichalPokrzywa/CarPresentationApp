@@ -17,10 +17,6 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 31e7db7d17991e34bb5990b58002c07d
   m_SerializeEntries:
-  - m_GUID: c5fb13d8d2f66f44a906c6793d4259b1
-    m_Address: Assets/TestDriveDate.txt
-    m_ReadOnly: 0
-    m_SerializedLabels: []
   - m_GUID: f6cc8a3f1a07eeb4d994a86f3194b4c3
     m_Address: Assets/jsonviewer.json
     m_ReadOnly: 0
