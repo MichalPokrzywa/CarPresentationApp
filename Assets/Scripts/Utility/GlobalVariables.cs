@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 public enum Version {
-	Label,
-	Sharp,
-	Unity
+	Label = 1,
+	Sharp = 2 ,
+	Unity = 3
 }
 public static class GlobalVariables
 {

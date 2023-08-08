@@ -1,6 +1,6 @@
-#111111
-#EEEEEE
-#55BFD4
-#BD162C
-#FF00FF
-#32CD32
+#111111 | Label Sharp Unity
+#EEEEEE | Label Sharp Unity
+#55BFD4 | Label Sharp Unity
+#BD162C | Sharp Unity
+#FF00FF | Sharp Unity
+#32CD32 | Unity
