@@ -28,15 +28,15 @@ public class RimsCreator : MonoBehaviour
 					Toggle toggleComponent = newObject.GetComponent<Toggle>();
 					ConfigurationVersion configVersion = newObject.GetComponent<ConfigurationVersion>();
 					if (ColorUtility.TryParseHtmlString(data[0].Trim(), out newCol)) {
-						ccc.UpdateColor(newCol);
 						ccc.image = newObject.GetComponent<Image>();
+						ccc.UpdateColor(newCol);
 						ccc.UpdateImageColor();
 					}
 					else {
 						Debug.LogWarning("Invalid color format: " + data[0]);
 					}
 					toggleComponent.group = toggleComponentGroup;
-					//toggleComponentGroup.RegisterToggle(toggleComponent);
+					toggleComponentGroup.RegisterToggle(toggleComponent);
 					if (i > 1) {
 						newObject.transform.GetChild(1).gameObject.SetActive(true);
 					}

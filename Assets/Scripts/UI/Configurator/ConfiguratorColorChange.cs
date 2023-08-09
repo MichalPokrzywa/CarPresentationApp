@@ -13,17 +13,19 @@ public class ConfiguratorColorChange : MonoBehaviour {
 	}
 	public void UpdateColor(Color color) {
 		this.color = color;
-    }
+		UpdateImageColor();
 
-	public void UpdateImage(Image image) {
-		this.image = image;
+	}
+
+	public void UpdateImage(Image image2) {
+		image = image2;
 	}
 
 	public void UpdateImageColor(Color color) {
-		this.image.color = color;
+		image.color = color;
 	}
 
 	public void UpdateImageColor() {
-		this.image.color = color;
+		image.color = color;
 	}
 }
