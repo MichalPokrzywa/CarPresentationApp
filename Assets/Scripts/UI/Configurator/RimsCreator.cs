@@ -54,6 +54,7 @@ public class RimsCreator : MonoBehaviour
 		yield return null;
 		GetComponent<ChangeVersion>().UpdateToggles();
 		GetComponent<ColorChanger>().RegisterToggles();
+		
 	}
 
 }

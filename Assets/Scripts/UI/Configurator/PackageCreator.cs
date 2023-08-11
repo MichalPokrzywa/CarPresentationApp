@@ -37,6 +37,7 @@ public class PackageCreator : MonoBehaviour
 			}
 		}
 		yield return null;
-		GetComponent<ChangeVersion>().UpdateToggles();
+		GetComponent<ChangeVersion>().UpdateToggles(); 
+		GetComponent<MultiToggleGroup>().Load();
 	}
 }

@@ -23,8 +23,9 @@ public class ConfiguratorVersionManager : MonoBehaviour {
 		    });
 		    child.GetComponent<Toggle>().group = myToggleGroup;
 		}
+		this.GetComponent<ChangeVersion>().UpdateToggles();
+	    StartCoroutine(LoadDescriptionCoroutine());
 
-	    descriptionElements.GetComponent<UpdateDescription>().ChangeVersion(myVersion);
     }
     IEnumerator LoadObjectCoroutine(GameObject objectToLoad) {
 	    while (!objectToLoad.GetComponent<ChangeVersion>().load) {
@@ -33,13 +34,30 @@ public class ConfiguratorVersionManager : MonoBehaviour {
 	    objectToLoad.GetComponent<ChangeVersion>().ChangeConfigVersion(myVersion);
 
     }
+    IEnumerator LoadDescriptionCoroutine() {
+	    UpdateDescription description = descriptionElements.GetComponent<UpdateDescription>();
+	    description.LoadText();
+	    while (!description.flag) {
+		    yield return null;
+	    }
+		description.ChangeVersion(myVersion);
 
-    void ChangeVersion() {
+	}
+
+	void ChangeVersion() {
 	    myVersion = Enum.Parse<Version>(myToggleGroup.GetFirstActiveToggle().GetComponentInChildren<TMP_Text>().text);
 	    for (int i = 0; i < carElements.Count; i++) {
 		    carElements[i].GetComponent<ChangeVersion>().ChangeConfigVersion(myVersion);
 		}
 	    descriptionElements.GetComponent<UpdateDescription>().ChangeVersion(myVersion);
+	}
+
+	public void ChangeVersion(int version) {
+		myVersion = Enum.Parse<Version>(myToggleGroup.GetFirstActiveToggle().GetComponentInChildren<TMP_Text>().text);
+		for (int i = 0; i < carElements.Count; i++) {
+			carElements[i].GetComponent<ChangeVersion>().ChangeConfigVersion(myVersion);
+		}
+		descriptionElements.GetComponent<UpdateDescription>().ChangeVersion(myVersion);
 	}
 
 }
