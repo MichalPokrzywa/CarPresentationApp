@@ -52,7 +52,7 @@ public class SplashScreen : MonoBehaviour {
 		yield return new WaitForSeconds(timeScale);
 	}
 	IEnumerator Check() {
-		UnityWebRequest w = UnityWebRequest.Get("http://itsilesia.com/3d/data/PraktykiGaleria/manifest.txt");
+		UnityWebRequest w = UnityWebRequest.Get(GlobalVariables.dirFirmPhoto);
 		yield return w.SendWebRequest();
 		if (w.error != null) {
 			Debug.Log("Error .. " + w.error);

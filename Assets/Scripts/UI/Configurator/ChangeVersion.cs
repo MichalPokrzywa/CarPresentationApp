@@ -42,15 +42,22 @@ public class ChangeVersion : MonoBehaviour {
 			}
 		}
 		LayoutRebuilder.ForceRebuildLayoutImmediate(GetComponent<RectTransform>());
-    }
-    public void ChangeActiveToggle(List<int> numbers) {
+	}
+	public void ChangeActiveToggle(List<int> numbers) {
 
-	    foreach (GameObject toggle in toggles) {
-		    toggle.GetComponent<Toggle>().isOn = false;
-	    }
+		foreach (GameObject toggle in toggles) {
+			toggle.GetComponent<Toggle>().isOn = false;
+		}
 
 		foreach (int number in numbers) {
 			toggles[number].GetComponent<Toggle>().isOn = true;
 		}
-    }
+	}
+	public void ChangeActiveToggle(int number) {
+
+		foreach (GameObject toggle in toggles) {
+			toggle.GetComponent<Toggle>().isOn = false;
+		}
+		toggles[number].GetComponent<Toggle>().isOn = true;
+	}
 }

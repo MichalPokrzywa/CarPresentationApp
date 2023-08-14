@@ -6,27 +6,32 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class ConfiguratorVersionManager : MonoBehaviour {
-	[SerializeField] private List<GameObject> carElements;
-	[SerializeField] private TMP_Text descriptionElements;
+	[SerializeField] public List<GameObject> carElements;
+	[SerializeField] TMP_Text descriptionElements;
 	Version myVersion = Version.Label;
-	ToggleGroup myToggleGroup; 
+	ToggleGroup myToggleGroup;
+	[SerializeField] public LoadingInformation loadingInformation;
     // Start is called before the first frame update
-    void Start()
+    void Start() {
+	    loadingInformation.SetLoading(false);
+		StartCoroutine(LoadComponents());
+    }
+
+    IEnumerator LoadComponents()
     {
-		myToggleGroup = GetComponent<ToggleGroup>();
-		for (int i = 0; i < carElements.Count; i++) {
-			StartCoroutine(LoadObjectCoroutine(carElements[i]));
+	    myToggleGroup = GetComponent<ToggleGroup>();
+	    for (int i = 0; i < carElements.Count; i++) {
+		    yield return StartCoroutine(LoadObjectCoroutine(carElements[i]));
 	    }
 	    foreach (Transform child in transform) {
-		    child.GetComponent<Toggle>().onValueChanged.AddListener(delegate {
-			    ChangeVersion();
-		    });
+		    child.GetComponent<Toggle>().onValueChanged.AddListener(delegate { ChangeVersion(); });
 		    child.GetComponent<Toggle>().group = myToggleGroup;
-		}
-		this.GetComponent<ChangeVersion>().UpdateToggles();
-	    StartCoroutine(LoadDescriptionCoroutine());
+	    }
+	    GetComponent<ChangeVersion>().UpdateToggles();
+	    yield return StartCoroutine(LoadDescriptionCoroutine());
+	    loadingInformation.SetLoading(true);
+	}
 
-    }
     IEnumerator LoadObjectCoroutine(GameObject objectToLoad) {
 	    while (!objectToLoad.GetComponent<ChangeVersion>().load) {
 			yield return null;
@@ -53,11 +58,14 @@ public class ConfiguratorVersionManager : MonoBehaviour {
 	}
 
 	public void ChangeVersion(int version) {
-		myVersion = Enum.Parse<Version>(myToggleGroup.GetFirstActiveToggle().GetComponentInChildren<TMP_Text>().text);
+		loadingInformation.SetLoading(false);
+		myVersion = (Version)version;
+		GetComponent<ChangeVersion>().ChangeActiveToggle(version);
 		for (int i = 0; i < carElements.Count; i++) {
 			carElements[i].GetComponent<ChangeVersion>().ChangeConfigVersion(myVersion);
 		}
 		descriptionElements.GetComponent<UpdateDescription>().ChangeVersion(myVersion);
+		loadingInformation.SetLoading(true);
 	}
 
 }
