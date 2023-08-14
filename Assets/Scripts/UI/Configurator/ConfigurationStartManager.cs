@@ -10,6 +10,7 @@ public class ConfigurationStartManager : MonoBehaviour {
 	[SerializeField] GameObject configurationObject;
 	[SerializeField] Button createButton;
 	[SerializeField] ConfigurationEditManager ceManager;
+	GameObject chosenSave;
 	void Start()
     {
 		foreach (string fileName in Directory.GetFiles(Application.persistentDataPath, "*.json")) {
@@ -18,6 +19,7 @@ public class ConfigurationStartManager : MonoBehaviour {
 				string json = r.ReadToEnd();
 				ConfigurationSavedElement csElement = newConfig.GetComponent<ConfigurationSavedElement>();
 				csElement.LoadConfigFromFile(json);
+				csElement.saveFileName = fileName;
 				csElement.button.onClick.AddListener(() => LoadConfiguration(csElement));
 			}
 		}
@@ -34,7 +36,14 @@ public class ConfigurationStartManager : MonoBehaviour {
     void LoadConfiguration(ConfigurationSavedElement csElement) {
 		
 		ceManager.gameObject.SetActive(true);
+		chosenSave = csElement.gameObject; 
 		ceManager.LoadSave(csElement.configurationSave);
 		this.gameObject.SetActive(false);
+    }
+
+    public void UpdateConfiguration(ConfigurationSave configSave) {
+	    ConfigurationSavedElement csElement = chosenSave.GetComponent<ConfigurationSavedElement>();
+	    csElement.LoadSavedConfig(configSave);
+		csElement.UpdateJsonFile();
     }
 }

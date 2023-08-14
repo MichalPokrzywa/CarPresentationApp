@@ -19,8 +19,9 @@ public class ConfiguratorVersionManager : MonoBehaviour {
 
     IEnumerator LoadComponents()
     {
+		carElements.Insert(0,this.gameObject);
 	    myToggleGroup = GetComponent<ToggleGroup>();
-	    for (int i = 0; i < carElements.Count; i++) {
+	    for (int i = 1; i < carElements.Count; i++) {
 		    yield return StartCoroutine(LoadObjectCoroutine(carElements[i]));
 	    }
 	    foreach (Transform child in transform) {
@@ -51,7 +52,7 @@ public class ConfiguratorVersionManager : MonoBehaviour {
 
 	void ChangeVersion() {
 	    myVersion = Enum.Parse<Version>(myToggleGroup.GetFirstActiveToggle().GetComponentInChildren<TMP_Text>().text);
-	    for (int i = 0; i < carElements.Count; i++) {
+	    for (int i = 1; i < carElements.Count; i++) {
 		    carElements[i].GetComponent<ChangeVersion>().ChangeConfigVersion(myVersion);
 		}
 	    descriptionElements.GetComponent<UpdateDescription>().ChangeVersion(myVersion);
@@ -61,7 +62,7 @@ public class ConfiguratorVersionManager : MonoBehaviour {
 		loadingInformation.SetLoading(false);
 		myVersion = (Version)version;
 		GetComponent<ChangeVersion>().ChangeActiveToggle(version);
-		for (int i = 0; i < carElements.Count; i++) {
+		for (int i = 1; i < carElements.Count; i++) {
 			carElements[i].GetComponent<ChangeVersion>().ChangeConfigVersion(myVersion);
 		}
 		descriptionElements.GetComponent<UpdateDescription>().ChangeVersion(myVersion);

@@ -11,6 +11,7 @@ public class ConfigurationEditManager : MonoBehaviour {
 	[SerializeField] Button saveButton;
 	[SerializeField] Button backButton;
 	[SerializeField] ConfiguratorVersionManager configuratorVersionManager;
+	[SerializeField] ConfigurationStartManager csManager;
 	// Start is called before the first frame update
     void Start()
     {
@@ -19,6 +20,7 @@ public class ConfigurationEditManager : MonoBehaviour {
         StartCoroutine(WaitForLoading(true));
     }
     public void LoadSave(ConfigurationSave loadedSave) {
+		configurationSave = loadedSave;
 	    int numericValue = (int)char.GetNumericValue(loadedSave.config[0][0]);
 	    configuratorVersionManager.ChangeVersion(numericValue);
 	    StartCoroutine(WaitForLoading(false));
@@ -39,12 +41,22 @@ public class ConfigurationEditManager : MonoBehaviour {
     public void Save() {
 	    ConfigurationSave newSave = new ConfigurationSave();
 	    newSave.name = configurationSave.name;
-		newSave.lastSave = DateTime.Today.ToLongDateString();
+		newSave.lastSave = DateTime.Now.ToLongDateString();
 		newSave.dateCreation = configurationSave.dateCreation;
-    }
-    public void Back() {
+		List<string> configList = new List<string>();
+		foreach (GameObject carElement in configuratorVersionManager.carElements) {
+			configList.Add(carElement.GetComponent<ChangeVersion>().ReturnActiveToggleNumber());
+		}
+		newSave.config = configList;
+		csManager.UpdateConfiguration(newSave);
+		csManager.gameObject.SetActive(true);
+		this.gameObject.SetActive(false);
 
     }
+    public void Back() {
+	    csManager.gameObject.SetActive(true);
+	    this.gameObject.SetActive(false);
+	}
     IEnumerator WaitForLoading(bool turnOff) {
 	    while (!configuratorVersionManager.loadingInformation.CheckLoading()) {
 		    yield return null;

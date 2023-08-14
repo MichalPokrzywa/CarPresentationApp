@@ -339,6 +339,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5753014942734368787, guid: 94d0290526c2bae45b9026a6b6f95ecf, type: 3}
   m_PrefabInstance: {fileID: 5753014942955968548}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &131724582 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 536388398, guid: cba66a9717159fa4c91ff7cdc05daf8e, type: 3}
+  m_PrefabInstance: {fileID: 6756415363640221007}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &153750733
 GameObject:
   m_ObjectHideFlags: 0
@@ -1308,6 +1313,11 @@ MonoBehaviour:
   minZoom: 4.1
   maxZooms: 5.9
   zoomSpeed: 50
+--- !u!1 &379943494 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1500527078, guid: cba66a9717159fa4c91ff7cdc05daf8e, type: 3}
+  m_PrefabInstance: {fileID: 6756415363640221007}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &380097661
 GameObject:
   m_ObjectHideFlags: 0
@@ -2067,6 +2077,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4289291022717028, guid: 7ecf74b289b28f246bfea1ee3e275c26, type: 3}
   m_PrefabInstance: {fileID: 236242614}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &745343443 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 343243574, guid: cba66a9717159fa4c91ff7cdc05daf8e, type: 3}
+  m_PrefabInstance: {fileID: 6756415363640221007}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &762753759
 GameObject:
   m_ObjectHideFlags: 0
@@ -2776,6 +2791,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1111766653}
   m_CullTransparentMesh: 1
+--- !u!1 &1147993710 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1957343276, guid: cba66a9717159fa4c91ff7cdc05daf8e, type: 3}
+  m_PrefabInstance: {fileID: 6756415363640221007}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1181850850
 GameObject:
   m_ObjectHideFlags: 0
@@ -4882,6 +4902,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06cafd883132157418a39315b220052a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1943778419 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1720214049, guid: 2d4c7cd398f464141b339094d9c0ed0d, type: 3}
+  m_PrefabInstance: {fileID: 8470178806662728688}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59c6b43b882a805469f2c75a7d408c4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1961411531 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5301659400315472368, guid: 4010027b13b9fc24c8e1a40f29b3ef4a, type: 3}
@@ -6462,6 +6493,30 @@ PrefabInstance:
       propertyPath: loadingInformation
       value: 
       objectReference: {fileID: 1544244839}
+    - target: {fileID: 1169812036, guid: cba66a9717159fa4c91ff7cdc05daf8e, type: 3}
+      propertyPath: carElements.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1169812036, guid: cba66a9717159fa4c91ff7cdc05daf8e, type: 3}
+      propertyPath: carElements.Array.data[0]
+      value: 
+      objectReference: {fileID: 745343443}
+    - target: {fileID: 1169812036, guid: cba66a9717159fa4c91ff7cdc05daf8e, type: 3}
+      propertyPath: carElements.Array.data[1]
+      value: 
+      objectReference: {fileID: 379943494}
+    - target: {fileID: 1169812036, guid: cba66a9717159fa4c91ff7cdc05daf8e, type: 3}
+      propertyPath: carElements.Array.data[2]
+      value: 
+      objectReference: {fileID: 131724582}
+    - target: {fileID: 1169812036, guid: cba66a9717159fa4c91ff7cdc05daf8e, type: 3}
+      propertyPath: carElements.Array.data[3]
+      value: 
+      objectReference: {fileID: 1147993710}
+    - target: {fileID: 1169812036, guid: cba66a9717159fa4c91ff7cdc05daf8e, type: 3}
+      propertyPath: carElements.Array.data[4]
+      value: 
+      objectReference: {fileID: 1544244827}
     - target: {fileID: 1241963505, guid: cba66a9717159fa4c91ff7cdc05daf8e, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -6498,6 +6553,10 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1488480966, guid: cba66a9717159fa4c91ff7cdc05daf8e, type: 3}
+      propertyPath: csManager
+      value: 
+      objectReference: {fileID: 1943778419}
     - target: {fileID: 1488480966, guid: cba66a9717159fa4c91ff7cdc05daf8e, type: 3}
       propertyPath: configuratorVersionManager
       value: 

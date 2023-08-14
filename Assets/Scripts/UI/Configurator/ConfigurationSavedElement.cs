@@ -9,6 +9,7 @@ using UnityEngine.UI;
 
 public class ConfigurationSavedElement : MonoBehaviour {
 	public ConfigurationSave configurationSave;
+    public string saveFileName;
 	[SerializeField] public Button button;
     [SerializeField] TMP_Text saveName;
     public void LoadSavedConfig(ConfigurationSave loadedSave) {
@@ -25,13 +26,18 @@ public class ConfigurationSavedElement : MonoBehaviour {
 	    configurationSave = new ConfigurationSave();
 		configurationSave.name = "New Config";
 		configurationSave.dateCreation = DateTime.Today.ToShortDateString();
-		configurationSave.lastSave = DateTime.Today.ToLongDateString();
+		configurationSave.lastSave = DateTime.Now.ToLongDateString();
 		saveName.text = $"{configurationSave.name} ({configurationSave.dateCreation})";
 		configurationSave.config = GlobalVariables.baseConfig;
     }
     public void SaveJsonFile() {
 	    string formattedString = DateTime.SpecifyKind(DateTime.Now, DateTimeKind.Local).ToString("yyyyMMddHHmmss");
 		string filePath = Path.Combine(Application.persistentDataPath, $"{formattedString}.json");
+	    File.WriteAllText(filePath, JsonConvert.SerializeObject(configurationSave));
+	}
+
+    public void UpdateJsonFile() {
+	    string filePath = Path.Combine(Application.persistentDataPath, saveFileName);
 	    File.WriteAllText(filePath, JsonConvert.SerializeObject(configurationSave));
 	}
 }
