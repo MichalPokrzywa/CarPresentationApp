@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -59,5 +60,15 @@ public class ChangeVersion : MonoBehaviour {
 			toggle.GetComponent<Toggle>().isOn = false;
 		}
 		toggles[number].GetComponent<Toggle>().isOn = true;
+	}
+
+	public string ReturnActiveToggleNumber() {
+		string result = string.Empty;
+		for (int i = 0; i < toggles.Count; i++) {
+			if (toggles[i].GetComponent<Toggle>().isOn) {
+				result += i.ToString();
+			}
+		}
+		return result;
 	}
 }

@@ -17,7 +17,6 @@ public class ConfigurationEditManager : MonoBehaviour {
         saveButton.onClick.AddListener(Save);
         backButton.onClick.AddListener(Back);
         StartCoroutine(WaitForLoading(true));
-
     }
     public void LoadSave(ConfigurationSave loadedSave) {
 	    int numericValue = (int)char.GetNumericValue(loadedSave.config[0][0]);
@@ -38,7 +37,10 @@ public class ConfigurationEditManager : MonoBehaviour {
     }
 
     public void Save() {
-
+	    ConfigurationSave newSave = new ConfigurationSave();
+	    newSave.name = configurationSave.name;
+		newSave.lastSave = DateTime.Today.ToLongDateString();
+		newSave.dateCreation = configurationSave.dateCreation;
     }
     public void Back() {
 

@@ -4871,6 +4871,17 @@ MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 23267805740020368, guid: 7ecf74b289b28f246bfea1ee3e275c26, type: 3}
   m_PrefabInstance: {fileID: 236242614}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1920904313 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1488480966, guid: cba66a9717159fa4c91ff7cdc05daf8e, type: 3}
+  m_PrefabInstance: {fileID: 6756415363640221007}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06cafd883132157418a39315b220052a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1961411531 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5301659400315472368, guid: 4010027b13b9fc24c8e1a40f29b3ef4a, type: 3}
@@ -6447,6 +6458,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1169812036, guid: cba66a9717159fa4c91ff7cdc05daf8e, type: 3}
+      propertyPath: loadingInformation
+      value: 
+      objectReference: {fileID: 1544244839}
     - target: {fileID: 1241963505, guid: cba66a9717159fa4c91ff7cdc05daf8e, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -6832,13 +6847,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 226946946}
     m_Modifications:
+    - target: {fileID: 1720214049, guid: 2d4c7cd398f464141b339094d9c0ed0d, type: 3}
+      propertyPath: ceManager
+      value: 
+      objectReference: {fileID: 1920904313}
     - target: {fileID: 8470178805823663587, guid: 2d4c7cd398f464141b339094d9c0ed0d, type: 3}
       propertyPath: m_Name
       value: Configurator Start
       objectReference: {fileID: 0}
     - target: {fileID: 8470178805823663587, guid: 2d4c7cd398f464141b339094d9c0ed0d, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8470178805823663588, guid: 2d4c7cd398f464141b339094d9c0ed0d, type: 3}
       propertyPath: m_Pivot.x
