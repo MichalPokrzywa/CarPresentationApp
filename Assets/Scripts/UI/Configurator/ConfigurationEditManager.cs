@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,6 +11,7 @@ public class ConfigurationEditManager : MonoBehaviour {
 	[SerializeField] Button backButton;
 	[SerializeField] ConfiguratorVersionManager configuratorVersionManager;
 	[SerializeField] ConfigurationStartManager csManager;
+	ConfigurationSave tempSave;
 	// Start is called before the first frame update
     void Start()
     {
@@ -23,18 +23,18 @@ public class ConfigurationEditManager : MonoBehaviour {
 		configurationSave = loadedSave;
 	    int numericValue = (int)char.GetNumericValue(loadedSave.config[0][0]);
 	    configuratorVersionManager.ChangeVersion(numericValue);
-	    StartCoroutine(WaitForLoading(false));
+	    List<int> digits = new List<int>();
+		StartCoroutine(WaitForLoading(false));
 		for (int i = 1; i < loadedSave.config.Count; i++) {
 		    string config = loadedSave.config[i];
-		    List<int> digits = new List<int>();
 		    foreach (char c in config) {
 			    if (char.IsDigit(c)) {
-				    int digit = (int)Char.GetNumericValue(c);
-				    digits.Add(digit);
-					Debug.Log(digit);
+				    int digit = (int)char.GetNumericValue(c);
+					digits.Add(digit);
 			    }
 		    }
-		    configuratorVersionManager.carElements[i-1].GetComponent<ChangeVersion>().ChangeActiveToggle(digits);
+		    configuratorVersionManager.carElements[i].GetComponent<ChangeVersion>().ChangeActiveToggle(digits);
+			digits.Clear();
 	    }
     }
 
@@ -48,15 +48,40 @@ public class ConfigurationEditManager : MonoBehaviour {
 			configList.Add(carElement.GetComponent<ChangeVersion>().ReturnActiveToggleNumber());
 		}
 		newSave.config = configList;
-		csManager.UpdateConfiguration(newSave);
-		csManager.gameObject.SetActive(true);
-		this.gameObject.SetActive(false);
+		if (newSave.config == configurationSave.config) {
+			csManager.UpdateConfiguration(newSave);
+			csManager.gameObject.SetActive(true);
+			this.gameObject.SetActive(false);
+		}
+		else {
+			tempSave = newSave;
+			Debug.Log(PopupManager.instance);
+			PopupManager.instance.ShowPopup("Warning", "Do you want override configuration?", "Yes", "No", HandleChoiceSave);
+		}
+
 
     }
     public void Back() {
-	    csManager.gameObject.SetActive(true);
-	    this.gameObject.SetActive(false);
-	}
+		PopupManager.instance.ShowPopup("Warning","Do you want to close configuration without saving?","yes","no",HandleChoiceBack);
+    }
+
+    void HandleChoiceSave(bool isAccepted) {
+	    if (isAccepted) {
+		    csManager.UpdateConfiguration(tempSave);
+		    csManager.gameObject.SetActive(true);
+		    this.gameObject.SetActive(false);
+			csManager.GetComponent<ConfiguratorRestoreCar>().RestoreCar();
+		}
+    }
+
+    void HandleChoiceBack(bool isAccepted) {
+	    if (isAccepted) {
+		    csManager.gameObject.SetActive(true);
+		    this.gameObject.SetActive(false);
+		    csManager.GetComponent<ConfiguratorRestoreCar>().RestoreCar();
+		}
+    }
+
     IEnumerator WaitForLoading(bool turnOff) {
 	    while (!configuratorVersionManager.loadingInformation.CheckLoading()) {
 		    yield return null;

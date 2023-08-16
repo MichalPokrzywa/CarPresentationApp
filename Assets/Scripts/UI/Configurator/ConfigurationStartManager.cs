@@ -29,6 +29,7 @@ public class ConfigurationStartManager : MonoBehaviour {
     void CreateNewConfiguration() {
 	    GameObject newConfig = Instantiate(configurationObject, configurationList.transform);
 	    ConfigurationSavedElement csElement = newConfig.GetComponent<ConfigurationSavedElement>();
+	    csElement.button.onClick.AddListener(() => LoadConfiguration(csElement));
 		csElement.CreateSave();
 		csElement.SaveJsonFile();
     }
