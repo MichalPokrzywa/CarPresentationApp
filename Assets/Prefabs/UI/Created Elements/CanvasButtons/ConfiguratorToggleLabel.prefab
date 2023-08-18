@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6749989188823552275}
   - component: {fileID: 6185506405053949255}
   m_Layer: 5
-  m_Name: ConfiguratorLabel
+  m_Name: ConfiguratorToggleLabel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -139,7 +139,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 886da67689cd1d1449e0159a51a68b47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 0
+  versions: 
 --- !u!1 &5983782242533468801
 GameObject:
   m_ObjectHideFlags: 0
@@ -206,7 +206,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Config 1 (11/06/2023)
+  m_text: 'Drive Version
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b4ce8aa41a46cc54492bef935c2cc8a8, type: 2}
   m_sharedMaterial: {fileID: 6536284715020394944, guid: b4ce8aa41a46cc54492bef935c2cc8a8, type: 2}
