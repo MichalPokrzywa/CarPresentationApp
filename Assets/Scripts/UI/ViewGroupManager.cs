@@ -7,8 +7,8 @@ public class ViewGroupManager : MonoBehaviour
 	private static ViewGroupManager _instance;
 	public static ViewGroupManager instance => _instance;
 
-	readonly List<GameObject> views = new List<GameObject>();
-	int currentView;
+	public readonly List<GameObject> views = new List<GameObject>();
+	GameObject currentView;
 	void Awake() {
 		if (_instance != null && _instance != this) {
 			Destroy(gameObject);
@@ -19,20 +19,18 @@ public class ViewGroupManager : MonoBehaviour
 	}
 
 	void Start() {
-		currentView = 0;
 		foreach (Transform child in transform) {
 			views.Add(child.gameObject);
 		}
-		views[0].SetActive(true);
+		currentView = views[0];
+		views.RemoveAt(views.Count-1);
+		currentView.SetActive(true);
 	}
 
-	public IEnumerator ChangeView(int newView) {
-		views[currentView].SetActive(false);
-		StartCoroutine(views[currentView].GetComponent<ViewAnimation>().MakeAnimationDown(currentView));
-		views[newView].SetActive(true);
-		StartCoroutine(views[newView].GetComponent<ViewAnimation>().MakeAnimationUp(newView));
-		currentView = newView;
-		yield return null;
+	public IEnumerator ChangeView(GameObject view) {
+		yield return StartCoroutine(currentView.GetComponent<ViewHandler>().PlayAnimationDown());
+		yield return StartCoroutine(view.GetComponent<ViewHandler>().PlayAnimationUp());
+		currentView = view;
 	}
 
 }

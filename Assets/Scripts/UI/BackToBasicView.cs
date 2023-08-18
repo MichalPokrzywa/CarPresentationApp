@@ -12,6 +12,6 @@ public class BackToBasicView : MonoBehaviour
     }
 
     void Back() {
-	    StartCoroutine(ViewGroupManager.instance.ChangeView(0));
+		StartCoroutine(ViewGroupManager.instance.ChangeView(ViewGroupManager.instance.views[0]));
     }
 }

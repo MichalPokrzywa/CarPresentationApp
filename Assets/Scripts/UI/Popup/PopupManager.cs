@@ -9,7 +9,8 @@ using UnityEngine.Localization.Settings;
 using UnityEngine.UI;
 
 public class PopupManager : MonoBehaviour {
-	public static PopupManager instance { get; private set; }
+	private static PopupManager _instance;
+	public static PopupManager instance => _instance;
 	[SerializeField] TMP_Text title;
 	[SerializeField] TMP_Text description;
 	[SerializeField] Button acceptButton;
@@ -18,7 +19,6 @@ public class PopupManager : MonoBehaviour {
 	LocalizeStringEvent localizeStringEvent;
 	Action<bool> choiceCallback;
 	bool isInitialized = false;
-	// Start is called before the first frame update
 	void Start()
     {
 	    exitButton.onClick.AddListener(ExitPopup);
@@ -26,20 +26,18 @@ public class PopupManager : MonoBehaviour {
 		refuseButton.onClick.AddListener(OnRefuseButtonClicked);
 		gameObject.SetActive(false);
     }
-	private void Awake() {
-		if (instance == null) {
-			instance = this;
-			Initialize();
-		}
-		else {
+	void Awake() {
+		if (_instance != null && _instance != this) {
 			Destroy(gameObject);
 		}
+		else {
+			_instance = this;
+			Initialize();
+		}
 	}
-	private void Initialize() {
-		// Additional initialization logic goes here
+	void Initialize() {
 		isInitialized = true;
 	}
-	// Update is called once per frame
 	public void ShowPopup(string title,string description,string acceptInformation,string refuseInformation,Action<bool> callback) {
 		if (!isInitialized) {
 			Initialize();
