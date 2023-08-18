@@ -15,12 +15,116 @@ MonoBehaviour:
   m_TableCollectionName: LocalizationTable
   m_TableCollectionNameGuidString: c67074b65ca922a4488ef235e0da5f31
   m_Entries:
-  - m_Id: 542899855360
-    m_Key: test
+  - m_Id: 16290698393661440
+    m_Key: TestDriveTitle
     m_Metadata:
       m_Items: []
-  - m_Id: 661423049199616
-    m_Key: New Entry
+  - m_Id: 16291619882250240
+    m_Key: TestDriveTime
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16291812354666496
+    m_Key: TestDriveSend
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16292199430205440
+    m_Key: TestDriveRefresh
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16291761326764032
+    m_Key: TestDriveName
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16291917363261440
+    m_Key: TestDriveList
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16291359558578176
+    m_Key: TestDriveDescription
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16291538567278592
+    m_Key: TestDriveDate
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16299748602785792
+    m_Key: PopupTitleWarning
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16300916343156736
+    m_Key: PopupRespondYes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16300996311756800
+    m_Key: PopupRespondNo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16300181735976960
+    m_Key: PopupDescriptionOverride
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16300694992957440
+    m_Key: PopupDescriptionNotSaving
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16301739437568000
+    m_Key: ConfigurationDescriptionUnity
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16299606915002368
+    m_Key: GalleryTitle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16297080366936064
+    m_Key: ConfiguratorTitle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16298560645869568
+    m_Key: ConfiguratorSave
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16298249571119104
+    m_Key: ConfiguratorRims
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16298317367848960
+    m_Key: ConfiguratorPackages
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16298089701027840
+    m_Key: ConfiguratorDrive
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16301421953921024
+    m_Key: ConfigurationDescriptionSharp
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16297317663879168
+    m_Key: ConfiguratorDescription
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16297603807686656
+    m_Key: ConfiguratorCreate
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16298160857395200
+    m_Key: ConfiguratorColor
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16298707433926656
+    m_Key: ConfiguratorBack
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16297978459697152
+    m_Key: ConfigurationVersion
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16301127715106816
+    m_Key: ConfigurationDescriptionLabel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16317287001075712
+    m_Key: TestDriveOptional
     m_Metadata:
       m_Items: []
   m_Metadata:

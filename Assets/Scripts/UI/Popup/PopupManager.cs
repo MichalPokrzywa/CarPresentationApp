@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Localization;
+using UnityEngine.Localization.Components;
 using UnityEngine.Localization.Settings;
 using UnityEngine.UI;
 
@@ -13,6 +15,7 @@ public class PopupManager : MonoBehaviour {
 	[SerializeField] Button acceptButton;
 	[SerializeField] Button refuseButton;
 	[SerializeField] Button exitButton;
+	LocalizeStringEvent localizeStringEvent;
 	Action<bool> choiceCallback;
 	bool isInitialized = false;
 	// Start is called before the first frame update
@@ -36,16 +39,17 @@ public class PopupManager : MonoBehaviour {
 		// Additional initialization logic goes here
 		isInitialized = true;
 	}
-
 	// Update is called once per frame
 	public void ShowPopup(string title,string description,string acceptInformation,string refuseInformation,Action<bool> callback) {
 		if (!isInitialized) {
 			Initialize();
 		}
-		this.title.text = title;
-		this.description.text = description;
-		this.acceptButton.GetComponentInChildren<TMP_Text>().text = acceptInformation;
-		this.refuseButton.GetComponentInChildren<TMP_Text>().text = refuseInformation;
+		Locale activeLocale = LocalizationSettings.Instance.GetSelectedLocale();
+		LocalizedStringDatabase localized = LocalizationSettings.StringDatabase;
+		this.title.text = localized.GetLocalizedString(title, activeLocale);
+		this.description.text = localized.GetLocalizedString(description, activeLocale);
+		this.acceptButton.GetComponentInChildren<TMP_Text>().text = localized.GetLocalizedString(acceptInformation, activeLocale);
+		this.refuseButton.GetComponentInChildren<TMP_Text>().text = localized.GetLocalizedString(refuseInformation, activeLocale);
 		choiceCallback = callback;
 		this.gameObject.SetActive(true);
 	}

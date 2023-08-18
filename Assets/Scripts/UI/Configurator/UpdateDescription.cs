@@ -2,30 +2,48 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Localization;
+using UnityEngine.Localization.Components;
+using UnityEngine.Localization.Settings;
+using UnityEngine.Localization.Tables;
 
 public class UpdateDescription : MonoBehaviour {
 	TMP_Text description;
-	string[] texts;
 	public bool flag = false;
+	LocalizeStringEvent localizeStringEvent;
+	LocalizedString localizedString;
     // Start is called before the first frame update
     public void LoadText() {
+	    localizeStringEvent = GetComponent<LocalizeStringEvent>();
+	    localizedString = new LocalizedString(LocalizationSettings.StringDatabase.DefaultTable, "ConfigurationDescriptionLabel");
+	    localizeStringEvent.StringReference = localizedString;
 	    description = GetComponent<TMP_Text>();
-	    TextAsset textAsset = Resources.Load<TextAsset>("DescriptionsCars");
-	    texts = textAsset.text.Split('\n');
-	    flag = true;
+		flag = true;
     }
     public void ChangeVersion(Version version)
     {
 	    switch (version) {
 		    case Version.Label:
-			    description.text = texts[0];
+			    AssignNewValue("ConfigurationDescriptionLabel");
+			    description.text = LocalizationSettings.StringDatabase.GetLocalizedString(
+				    localizedString.TableEntryReference, LocalizationSettings.Instance.GetSelectedLocale());
+
 			    break;
 			case Version.Sharp:
-				description.text = texts[1];
+				AssignNewValue("ConfigurationDescriptionSharp");
+				description.text = LocalizationSettings.StringDatabase.GetLocalizedString(
+					localizedString.TableEntryReference, LocalizationSettings.Instance.GetSelectedLocale());
 				break;
 			case Version.Unity:
-				description.text = texts[2];
+				AssignNewValue("ConfigurationDescriptionUnity");
+				description.text = LocalizationSettings.StringDatabase.GetLocalizedString(
+					localizedString.TableEntryReference, LocalizationSettings.Instance.GetSelectedLocale());
 				break;
 	    }
+    }
+
+    void AssignNewValue(string value) {
+	    localizedString.TableEntryReference= value;
+	    localizeStringEvent.StringReference = localizedString;
     }
 }

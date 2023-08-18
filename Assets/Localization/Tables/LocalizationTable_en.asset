@@ -18,8 +18,119 @@ MonoBehaviour:
   m_Metadata:
     m_Items: []
   m_TableData:
-  - m_Id: 542899855360
-    m_Localized: test
+  - m_Id: 16290698393661440
+    m_Localized: Test drive
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16291359558578176
+    m_Localized: Schedule your test drive
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16291538567278592
+    m_Localized: Date
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16291619882250240
+    m_Localized: Time
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16291761326764032
+    m_Localized: Name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16291812354666496
+    m_Localized: Send
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16291917363261440
+    m_Localized: Test drives list
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16292199430205440
+    m_Localized: Refresh
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16297080366936064
+    m_Localized: Configurator
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16297317663879168
+    m_Localized: Select saved configuration
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16297603807686656
+    m_Localized: Create New Configuration
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16297978459697152
+    m_Localized: Choose version
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16298089701027840
+    m_Localized: Drive
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16298160857395200
+    m_Localized: Color
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16298249571119104
+    m_Localized: Rims
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16298317367848960
+    m_Localized: Packages
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16298560645869568
+    m_Localized: Save
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16298707433926656
+    m_Localized: Back
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16299606915002368
+    m_Localized: Gallery
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16299748602785792
+    m_Localized: Warning
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16300181735976960
+    m_Localized: Do you want override configuration?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16300694992957440
+    m_Localized: Do you want to close configuration without saving?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16300916343156736
+    m_Localized: Yes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16300996311756800
+    m_Localized: No
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16301127715106816
+    m_Localized: A simple and economical car with basic equipment. Ideal for those
+      looking for a sensible and economical means of transport.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16301421953921024
+    m_Localized: A car with a powerful engine and sporty suspension for a dynamic
+      ride and a unique driving experience.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16301739437568000
+    m_Localized: "A car with a combination of petrol and electric engine, resulting
+      in fuel savings and lower CO2 emissions.\r"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16317287001075712
+    m_Localized: Optional
     m_Metadata:
       m_Items: []
   references:

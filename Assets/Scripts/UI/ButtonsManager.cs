@@ -15,14 +15,18 @@ public class ButtonsManager : MonoBehaviour
     void Start() {
 	    currentButton = 0;
 	    foreach (Transform child in transform) {
-		    buttons.Add(child.GetComponent<Toggle>());
-		    child.GetComponent<Toggle>().onValueChanged.AddListener(delegate {
+		    Toggle toggle = child.GetComponent<Toggle>();
+		    buttons.Add(toggle);
+		    toggle.onValueChanged.AddListener(delegate {
 			    StartCoroutine(ChangeView());
 		    });
-		    child.GetComponent<Toggle>().targetGraphic.GetComponent<Image>().sprite = backgroundImage;
-		    child.GetComponent<Toggle>().targetGraphic.GetComponent<Image>().color = new Color(1,1,1,0);
+		    toggle.isOn = false;
+		    toggle.targetGraphic.GetComponent<Image>().sprite = backgroundImage;
+		    toggle.targetGraphic.GetComponent<Image>().color = new Color(1,1,1,0);
 		}
+		
 	    buttons[0].Select();
+	    buttons[0].isOn = true;
 		buttons[0].targetGraphic.GetComponent<Image>().color = Color.white;
 	}
 

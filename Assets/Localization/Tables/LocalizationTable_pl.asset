@@ -18,8 +18,120 @@ MonoBehaviour:
   m_Metadata:
     m_Items: []
   m_TableData:
-  - m_Id: 542899855360
-    m_Localized: proba
+  - m_Id: 16290698393661440
+    m_Localized: Jazdy Testowe
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16291359558578176
+    m_Localized: "Zarejestr\xF3j jazd\u0119 testow\u0105"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16291538567278592
+    m_Localized: Data
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16291619882250240
+    m_Localized: Czas
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16291761326764032
+    m_Localized: Imie
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16291812354666496
+    m_Localized: "Wy\u015Blij"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16291917363261440
+    m_Localized: Lista jazd testowych
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16292199430205440
+    m_Localized: "Od\u015Bwie\u017C"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16297080366936064
+    m_Localized: Konfigurator
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16297317663879168
+    m_Localized: "Wybierz zapisan\u0105 konfiguracje"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16297603807686656
+    m_Localized: "Stw\xF3rz now\u0105 konfiguracje"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16297978459697152
+    m_Localized: "Wybierz wersj\u0119"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16298089701027840
+    m_Localized: "Nap\u0119d"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16298160857395200
+    m_Localized: Kolor
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16298249571119104
+    m_Localized: Felgi
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16298317367848960
+    m_Localized: Pakiety
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16298560645869568
+    m_Localized: Zapisz
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16298707433926656
+    m_Localized: "Wr\xF3\u0107"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16299606915002368
+    m_Localized: Galeria
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16299748602785792
+    m_Localized: Uwaga
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16300181735976960
+    m_Localized: "Czy chcesz nadpisa\u0107 konfiguracje?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16300694992957440
+    m_Localized: "Czy chcesz zamkn\u0105\u0107 konfiguracj\u0119 bez zapisywania?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16300916343156736
+    m_Localized: Tak
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16300996311756800
+    m_Localized: Nie
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16301127715106816
+    m_Localized: "Proste i ekonomiczne auto z podstawowym wyposa\u017Ceniem. Idealny
+      dla os\xF3b szukaj\u0105cych rozs\u0105dnego i ekonomicznego \u015Brodka transportu."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16301421953921024
+    m_Localized: "Samoch\xF3d z mocnym silnikiem i sportowym zawieszeniem zapewniaj\u0105cy
+      dynamiczn\u0105 jazd\u0119 i wyj\u0105tkowe wra\u017Cenia z jazdy."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16301739437568000
+    m_Localized: "Samoch\xF3d z kombinacj\u0105 silnika benzynowego i elektrycznego,
+      co skutkuje oszcz\u0119dno\u015Bci\u0105 paliwa i ni\u017Csz\u0105 emisj\u0105
+      CO2."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16317287001075712
+    m_Localized: Opcjonalne
     m_Metadata:
       m_Items: []
   references:

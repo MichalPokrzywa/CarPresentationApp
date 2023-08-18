@@ -2,6 +2,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Localization;
+using UnityEngine.Localization.Settings;
+using UnityEngine.Localization.Tables;
 using UnityEngine.UI;
 
 public class ConfigurationEditManager : MonoBehaviour {
@@ -55,14 +58,17 @@ public class ConfigurationEditManager : MonoBehaviour {
 		}
 		else {
 			tempSave = newSave;
-			Debug.Log(PopupManager.instance);
-			PopupManager.instance.ShowPopup("Warning", "Do you want override configuration?", "Yes", "No", HandleChoiceSave);
+			Locale activeLocale = LocalizationSettings.Instance.GetSelectedLocale();
+			LocalizedStringDatabase localized = LocalizationSettings.StringDatabase;
+			PopupManager.instance.ShowPopup("PopupTitleWarning", "PopupDescriptionOverride", "PopupRespondYes", "PopupRespondNo", HandleChoiceSave);
 		}
 
 
     }
     public void Back() {
-		PopupManager.instance.ShowPopup("Warning","Do you want to close configuration without saving?","yes","no",HandleChoiceBack);
+	    Locale activeLocale = LocalizationSettings.Instance.GetSelectedLocale();
+	    LocalizedStringDatabase localized = LocalizationSettings.StringDatabase;
+	    PopupManager.instance.ShowPopup("PopupTitleWarning", "PopupDescriptionNotSaving", "PopupRespondYes", "PopupRespondNo", HandleChoiceBack);
     }
 
     void HandleChoiceSave(bool isAccepted) {
