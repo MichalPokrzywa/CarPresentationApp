@@ -29,7 +29,6 @@ public class GalleryOverview : MonoBehaviour {
 		Debug.Log(sprite);
 		tumbnail.GetComponent<Image>().sprite = sprite;
 		tumbnail.GetComponent<Tumbnail>().index = index;
-		
 		yield return null;
     }
 }

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -8,22 +9,24 @@ public class GalleryManager : MonoBehaviour {
 	List<Texture2D> photosList;
 	GalleryOverview gallery;
 	private string[] photoFiles;
-	void Start() {
+	async void Start() {
 		photoFiles = System.IO.Directory.GetFiles(GlobalVariables.dirPathLow, "*.jpg");
 		gallery = GalleryOverview.instance;
 		photosList = new List<Texture2D>();
-		AddImages(photoFiles);
+		await AddImages(photoFiles);
+		
 	}
 
 	public Texture2D GetPhoto(int index) {
 		return photosList[index];
 	}
-	async void AddImages(string[] fileNames) {
+	async Task AddImages(string[] fileNames) {
 		for (int i = 0; i < fileNames.Length; i++) {
 			UnityWebRequest uwr = UnityWebRequestTexture.GetTexture(fileNames[i]);
 			photosList.Add(await Request.GetAsyncTexture(fileNames[i]));
 			StartCoroutine(gallery.LoadImage(photosList[i],i));
 		}
+		GetComponent<LoadingInformation>().SetLoading(true);
 	}
 	//private IEnumerator Check() {
 	//	UnityWebRequest w = UnityWebRequest.Get("http://itsilesia.com/3d/data/PraktykiGaleria/manifest.txt");

@@ -360,6 +360,7 @@ GameObject:
   m_Component:
   - component: {fileID: 505406406973236489}
   - component: {fileID: 1514727595}
+  - component: {fileID: 1546302473621432838}
   m_Layer: 5
   m_Name: Test drive List
   m_TagString: Untagged
@@ -408,6 +409,18 @@ MonoBehaviour:
   listOfDrivesGameObject: {fileID: 595886890}
   recordPrefab: {fileID: 6351662192843173796, guid: c3b5904734a615c4f97b397f481ca078, type: 3}
   loaderAnimation: {fileID: 3394504631848450255}
+--- !u!114 &1546302473621432838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 505406406973236490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6883a59d9f29f4b4f834a1d827ff636a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &505406407117401310
 GameObject:
   m_ObjectHideFlags: 0
@@ -554,6 +567,7 @@ GameObject:
   - component: {fileID: 505406407136316550}
   - component: {fileID: 505406407136316548}
   - component: {fileID: 505406407136316549}
+  - component: {fileID: 1347102309459039588}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -678,6 +692,46 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &1347102309459039588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 505406407136316551}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_StringReference:
+    m_TableReference:
+      m_TableCollectionName: GUID:c67074b65ca922a4488ef235e0da5f31
+    m_TableEntryReference:
+      m_KeyId: 16292199430205440
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  m_FormatArguments: []
+  m_UpdateString:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 505406407136316549}
+        m_TargetAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &505406407578562547
 GameObject:
   m_ObjectHideFlags: 0

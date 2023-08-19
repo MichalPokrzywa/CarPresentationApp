@@ -24,7 +24,8 @@ public class PopupManager : MonoBehaviour {
 	    exitButton.onClick.AddListener(ExitPopup);
 		acceptButton.onClick.AddListener(OnAcceptButtonClicked);
 		refuseButton.onClick.AddListener(OnRefuseButtonClicked);
-		gameObject.SetActive(false);
+		GetComponent<LoadingInformation>().SetLoading(true);
+		Debug.Log("lmao");
     }
 	void Awake() {
 		if (_instance != null && _instance != this) {

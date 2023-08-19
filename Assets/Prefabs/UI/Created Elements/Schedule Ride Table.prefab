@@ -829,7 +829,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Select
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: fb822086e49f9f049b6b7ffda43bb0e5, type: 2}
   m_sharedMaterial: {fileID: -8319592863513416397, guid: fb822086e49f9f049b6b7ffda43bb0e5, type: 2}
@@ -1490,15 +1490,7 @@ MonoBehaviour:
   m_ItemImage: {fileID: 0}
   m_Value: 0
   m_Options:
-    m_Options:
-    - m_Text: Select
-      m_Image: {fileID: 0}
-    - m_Text: Option B
-      m_Image: {fileID: 0}
-    - m_Text: Option C
-      m_Image: {fileID: 0}
-    - m_Text: Option C
-      m_Image: {fileID: 0}
+    m_Options: []
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1512,6 +1504,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5301659400842850664}
+  - component: {fileID: 3390011054979979630}
+  - component: {fileID: 9143057481644166217}
   m_Layer: 5
   m_Name: Schedule Ride Table
   m_TagString: Untagged
@@ -1543,6 +1537,34 @@ RectTransform:
   m_AnchoredPosition: {x: 70, y: 194.95}
   m_SizeDelta: {x: 280, y: 148.1}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &3390011054979979630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5301659400842850667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8365b0f59dc2be34293e7c20277c64b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dateDropdown: {fileID: 5301659401696606649}
+  timeDropdown: {fileID: 5301659400792235469}
+  inputField: {fileID: 5301659400315472368}
+  sendButton: {fileID: 5301659401269051367}
+--- !u!114 &9143057481644166217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5301659400842850667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6883a59d9f29f4b4f834a1d827ff636a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5301659400897080599
 GameObject:
   m_ObjectHideFlags: 0
@@ -2061,7 +2083,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Select
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: fb822086e49f9f049b6b7ffda43bb0e5, type: 2}
   m_sharedMaterial: {fileID: -8319592863513416397, guid: fb822086e49f9f049b6b7ffda43bb0e5, type: 2}
@@ -2691,15 +2713,7 @@ MonoBehaviour:
   m_ItemImage: {fileID: 0}
   m_Value: 0
   m_Options:
-    m_Options:
-    - m_Text: Select
-      m_Image: {fileID: 0}
-    - m_Text: Option B
-      m_Image: {fileID: 0}
-    - m_Text: Option C
-      m_Image: {fileID: 0}
-    - m_Text: Option C
-      m_Image: {fileID: 0}
+    m_Options: []
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []

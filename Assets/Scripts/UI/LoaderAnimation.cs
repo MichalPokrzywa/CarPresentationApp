@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class LoaderAnimation : MonoBehaviour
 {
+	static readonly IEnumerator delay = new WaitForSecondsRealtime(2.0f);
 	[SerializeField] float animationTime = 1.0f;
 	[SerializeField] float stopTime = 0.5f;
 	[SerializeField] Image loaderImage;
@@ -25,6 +26,7 @@ public class LoaderAnimation : MonoBehaviour
 	}
 
 	public IEnumerator Stop() {
+		yield return delay;
 		gameObject.SetActive(false);
 		yield return null;
 	}

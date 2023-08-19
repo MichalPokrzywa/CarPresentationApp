@@ -20,6 +20,7 @@ public class TestDriveTimeTable : MonoBehaviour {
 
 	// Start is called before the first frame update
 	async void Start() {
+		LoadingInformation loadingInformation = GetComponent<LoadingInformation>();
 		dateConfig = JsonConvert.DeserializeObject<DateConfig>(await Request.GetAsyncText(GlobalVariables.dateConfig));
 		List<string> date = new List<string>();
 		List<string> date2 = new List<string>();
@@ -27,21 +28,23 @@ public class TestDriveTimeTable : MonoBehaviour {
 			date.Add(day.ToString("dd'/'MM'/'yyyy"));
 		}
 		dateDropdown.AddOptions(date);
+		Debug.Log($"{DateTime.Parse(dateConfig.startDate + " " + dateConfig.startTime)} | {DateTime.Parse(dateConfig.startDate + " " + dateConfig.endTime)}");
 		foreach (DateTime time in EachTime(DateTime.Parse(dateConfig.startDate+" "+ dateConfig.startTime), DateTime.Parse(dateConfig.startDate + " " + dateConfig.endTime))) {
+			Debug.Log(time.ToString("HH:mm"));
 			date2.Add(time.ToString("HH:mm"));
 		}
-
-
 		dateDropdown.onValueChanged.AddListener(UpdateHours);
 		timeDropdown.AddOptions(date2);
 		sendButton.onClick.AddListener(AddNewRecord);
+		UpdateHours(0);
+		loadingInformation.SetLoading(true);
 	}
 
-	private async void UpdateHours(int arg0) {
+	async void UpdateHours(int arg0) {
 		List<Entry> entries = await api.GetAllRecordResults();
 		List<string> optionsToKeep = new List<string>();
 
-		foreach (DateTime time in EachTime(DateTime.Parse(dateConfig.startDate + " " + dateConfig.startTime), DateTime.Parse(dateConfig.startDate + " " + dateConfig.endTime))) {
+		foreach (DateTime time in EachTime(DateTime.Parse(dateDropdown.options[arg0].text + " " + dateConfig.startTime), DateTime.Parse(dateDropdown.options[arg0].text + " " + dateConfig.endTime))) {
 			optionsToKeep.Add(time.ToString("HH:mm"));
 		}
 		foreach (Entry en in entries) {
@@ -50,7 +53,13 @@ public class TestDriveTimeTable : MonoBehaviour {
 			}
 		}
 		timeDropdown.ClearOptions();
-		timeDropdown.AddOptions(optionsToKeep);
+		if (optionsToKeep.Count == 0) {
+			timeDropdown.interactable = false;
+		}
+		else {
+			timeDropdown.interactable = true;
+			timeDropdown.AddOptions(optionsToKeep);
+		}
 
 	}
 
@@ -68,11 +77,17 @@ public class TestDriveTimeTable : MonoBehaviour {
 		    from = DateTime.Today + from.TimeOfDay;
 		    thru = DateTime.Today + thru.TimeOfDay;
 	    }
-	    for (DateTime time = from.Date + from.TimeOfDay ; time <= thru.Date + thru.TimeOfDay; time = time.Add(TimeSpan.FromMinutes(30))) {
-			if (time > DateTime.Now) {
+		Debug.Log($"{from.Date + from.TimeOfDay} | {thru.Date + thru.TimeOfDay}");
+		Debug.Log(from.Date != DateTime.Today);
+		for (DateTime time = from.Date + from.TimeOfDay ; time <= thru.Date + thru.TimeOfDay; time = time.Add(TimeSpan.FromMinutes(30))) {
+
+			if (from.Date != DateTime.Today) {
 				yield return time;
 			}
-	    }
+			else if (time > DateTime.Now) {
+				yield return time;
+			}
+		}
 	}
 
     async void AddNewRecord() {

@@ -10,10 +10,12 @@ public class SplashScreen : MonoBehaviour {
 	[SerializeField] Image logo;
 	[SerializeField] float timeScale = 1.5f;
 	[SerializeField] float startTime = 1f;
+	ObjectLoader objectLoader;
 	CanvasGroup canvasGroup;
 	string filePath;
 	// Start is called before the first frame update
 	async void Start() {
+		objectLoader = GetComponent<ObjectLoader>();
 		canvasGroup = GetComponent<CanvasGroup>();
 		StartCoroutine(StartLoad());
 	}
@@ -21,6 +23,8 @@ public class SplashScreen : MonoBehaviour {
 	IEnumerator StartLoad() {
 		LoopLogo();
 		yield return StartCoroutine(Check());
+		yield return new WaitForSeconds(1f);
+		yield return StartCoroutine(objectLoader.WaitForGameObjects());
 		yield return new WaitForSeconds(2f);
 		yield return StartCoroutine(TurnOff());
 		this.gameObject.SetActive(false);

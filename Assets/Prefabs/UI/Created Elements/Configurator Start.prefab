@@ -407,6 +407,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8470178805823663588}
   - component: {fileID: 1720214049}
+  - component: {fileID: 2804738039362605056}
+  - component: {fileID: 8609624905419343304}
   m_Layer: 5
   m_Name: Configurator Start
   m_TagString: Untagged
@@ -453,6 +455,46 @@ MonoBehaviour:
   configurationList: {fileID: 1225668536}
   configurationObject: {fileID: 3862723141165647634, guid: 981fc2498a0175f4a9671dbc5f68716b, type: 3}
   createButton: {fileID: 8470178805844582659}
+  ceManager: {fileID: 0}
+--- !u!114 &2804738039362605056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8470178805823663587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72b7c06df7604d748bf151966e3040cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  carMeshes:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  carMaterials:
+  - {fileID: 2100000, guid: bff761b7e096ac849bedb4d802539ce6, type: 2}
+  - {fileID: 2100000, guid: 7e00b4046bd2ca5429f90632d734feb9, type: 2}
+  - {fileID: 2100000, guid: e5a36a49f7e66f9438772de96f10495c, type: 2}
+--- !u!114 &8609624905419343304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8470178805823663587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6883a59d9f29f4b4f834a1d827ff636a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8470178805844582657
 GameObject:
   m_ObjectHideFlags: 0

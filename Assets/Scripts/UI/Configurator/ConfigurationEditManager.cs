@@ -94,6 +94,7 @@ public class ConfigurationEditManager : MonoBehaviour {
 		    yield return null;
 	    }
 	    if (turnOff) {
+			GetComponent<LoadingInformation>().SetLoading(true);
 		    gameObject.SetActive(false);
 	    }
     }

@@ -8,7 +8,6 @@ using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class TestDriveList : MonoBehaviour {
-	static readonly IEnumerator delay = new WaitForSecondsRealtime(2.0f);
 	[SerializeField] TMP_Dropdown dateDropdown;
 	[SerializeField] Button refreshButton;
 	[SerializeField] GameObject listOfDrivesGameObject;
@@ -16,11 +15,13 @@ public class TestDriveList : MonoBehaviour {
 	[SerializeField] LoaderAnimation loaderAnimation;
 	ApiRequest api = new ApiRequest();
 	async void Start() {
-		StartCoroutine(ShowLoader());
+		LoadingInformation loadingInformation = GetComponent<LoadingInformation>();
 		await CreateRecords();
 		dateDropdown.onValueChanged.AddListener(UpdateRecords);
 		refreshButton.onClick.AddListener(RefreshRecords);
-		StartCoroutine(EndLoader());
+		UpdateRecords(0);
+		await Task.Delay(3000);
+		loadingInformation.SetLoading(true);
 	}
 
 	async Task CreateRecords()
@@ -61,7 +62,6 @@ public class TestDriveList : MonoBehaviour {
 	}
 
 	IEnumerator EndLoader() {
-		yield return delay;
 		yield return loaderAnimation.Stop();
 	}
 

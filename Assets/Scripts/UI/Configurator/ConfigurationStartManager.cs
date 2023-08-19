@@ -13,6 +13,7 @@ public class ConfigurationStartManager : MonoBehaviour {
 	GameObject chosenSave;
 	void Start()
     {
+		LoadingInformation loadingInformation = GetComponent<LoadingInformation>();
 		foreach (string fileName in Directory.GetFiles(Application.persistentDataPath, "*.json")) {
 			GameObject newConfig = Instantiate(configurationObject, configurationList.transform);
 			using (StreamReader r = new StreamReader(fileName)) {
@@ -23,9 +24,13 @@ public class ConfigurationStartManager : MonoBehaviour {
 				csElement.button.onClick.AddListener(() => LoadConfiguration(csElement));
 			}
 		}
-		Debug.Log(Application.persistentDataPath);
 		createButton.onClick.AddListener(CreateNewConfiguration);
-	}
+		Debug.Log(loadingInformation);
+		if (!loadingInformation.CheckLoading()) {
+			loadingInformation.SetLoading(true);
+		}
+		
+    }
     void CreateNewConfiguration() {
 	    GameObject newConfig = Instantiate(configurationObject, configurationList.transform);
 	    ConfigurationSavedElement csElement = newConfig.GetComponent<ConfigurationSavedElement>();
