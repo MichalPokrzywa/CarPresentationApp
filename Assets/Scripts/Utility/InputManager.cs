@@ -7,7 +7,7 @@ public class InputManager : MonoBehaviour
 	private static InputManager _instance;
 	public static InputManager instance => _instance;
 
-	[SerializeField] float simulateAxisValue = 0.5f; // Value to simulate when the program is idle
+	[SerializeField] float simulateAxisValue = 0.5f;
 	public bool isIdle;
 
 	void Awake() {

@@ -448,7 +448,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2535377643936283189
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1302,18 +1302,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2535377643936283189}
     m_Modifications:
-    - target: {fileID: 379429933, guid: 9459866e443df3e44984bd5ce23107b8, type: 3}
-      propertyPath: m_MovementType
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 379429933, guid: 9459866e443df3e44984bd5ce23107b8, type: 3}
-      propertyPath: m_VerticalScrollbar
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 379429933, guid: 9459866e443df3e44984bd5ce23107b8, type: 3}
-      propertyPath: m_HorizontalScrollbar
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 505406406973236489, guid: 9459866e443df3e44984bd5ce23107b8, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1402,13 +1390,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Test drive List
       objectReference: {fileID: 0}
-    - target: {fileID: 505406406973236490, guid: 9459866e443df3e44984bd5ce23107b8, type: 3}
-      propertyPath: m_IsActive
+    - target: {fileID: 8055453212921110239, guid: 9459866e443df3e44984bd5ce23107b8, type: 3}
+      propertyPath: m_Color.a
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 505406407136316549, guid: 9459866e443df3e44984bd5ce23107b8, type: 3}
-      propertyPath: m_fontStyle
-      value: 17
+    - target: {fileID: 8055453212921110239, guid: 9459866e443df3e44984bd5ce23107b8, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8055453212921110239, guid: 9459866e443df3e44984bd5ce23107b8, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8055453212921110239, guid: 9459866e443df3e44984bd5ce23107b8, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9459866e443df3e44984bd5ce23107b8, type: 3}

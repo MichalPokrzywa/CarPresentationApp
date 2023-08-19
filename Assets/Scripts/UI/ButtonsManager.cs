@@ -16,12 +16,12 @@ public class ButtonsManager : MonoBehaviour
 		foreach (Transform child in transform) {
 			PanelToggle panelToggle = child.GetComponent<PanelToggle>();
 		    buttons.Add(panelToggle);
-		    panelToggle.toggle.onValueChanged.AddListener(delegate {
-			    StartCoroutine(ChangeView(panelToggle));
-		    });
 		    panelToggle.toggle.isOn = false;
 		    panelToggle.targetImage.sprite = backgroundImage;
 			panelToggle.targetImage.color = color;
+			panelToggle.toggle.onValueChanged.AddListener(delegate {
+				StartCoroutine(ChangeView(panelToggle));
+			});
 		}
 		activeToggle = buttons[0];
 		activeToggle.toggle.Select();

@@ -188,7 +188,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Config 1 (11/06/2023)
+  m_text: Config1 (11/06/2023)
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b4ce8aa41a46cc54492bef935c2cc8a8, type: 2}
   m_sharedMaterial: {fileID: 6536284715020394944, guid: b4ce8aa41a46cc54492bef935c2cc8a8, type: 2}
@@ -233,7 +233,7 @@ MonoBehaviour:
   m_charWidthMaxAdj: 0
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
-  m_overflowMode: 0
+  m_overflowMode: 3
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
@@ -307,5 +307,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d45b9df74b184a34daf1dbb0614bf712, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  saveFileName: 
   button: {fileID: 3681764375258720710}
   saveName: {fileID: 7404308228800112118}

@@ -1,10 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
-using UnityEngine.Localization;
-using UnityEngine.Localization.Settings;
-using UnityEngine.Localization.Tables;
 using UnityEngine.UI;
 
 public class ConfigurationEditManager : MonoBehaviour {
@@ -14,6 +12,7 @@ public class ConfigurationEditManager : MonoBehaviour {
 	[SerializeField] Button backButton;
 	[SerializeField] ConfiguratorVersionManager configuratorVersionManager;
 	[SerializeField] ConfigurationStartManager csManager;
+	[SerializeField] TMP_InputField inputField;
 	ConfigurationSave tempSave;
 	// Start is called before the first frame update
     void Start()
@@ -39,6 +38,7 @@ public class ConfigurationEditManager : MonoBehaviour {
 		    configuratorVersionManager.carElements[i].GetComponent<ChangeVersion>().ChangeActiveToggle(digits);
 			digits.Clear();
 	    }
+		inputField.text = configurationSave.name;
     }
 
     public void Save() {
@@ -50,6 +50,11 @@ public class ConfigurationEditManager : MonoBehaviour {
 		foreach (GameObject carElement in configuratorVersionManager.carElements) {
 			configList.Add(carElement.GetComponent<ChangeVersion>().ReturnActiveToggleNumber());
 		}
+
+		if (inputField.text == string.Empty) {
+			inputField.text = "New Configuration";
+		}
+		newSave.name = inputField.text;
 		newSave.config = configList;
 		if (newSave.config == configurationSave.config) {
 			csManager.UpdateConfiguration(newSave);
@@ -58,16 +63,12 @@ public class ConfigurationEditManager : MonoBehaviour {
 		}
 		else {
 			tempSave = newSave;
-			Locale activeLocale = LocalizationSettings.Instance.GetSelectedLocale();
-			LocalizedStringDatabase localized = LocalizationSettings.StringDatabase;
 			PopupManager.instance.ShowPopup("PopupTitleWarning", "PopupDescriptionOverride", "PopupRespondYes", "PopupRespondNo", HandleChoiceSave);
 		}
 
 
     }
     public void Back() {
-	    Locale activeLocale = LocalizationSettings.Instance.GetSelectedLocale();
-	    LocalizedStringDatabase localized = LocalizationSettings.StringDatabase;
 	    PopupManager.instance.ShowPopup("PopupTitleWarning", "PopupDescriptionNotSaving", "PopupRespondYes", "PopupRespondNo", HandleChoiceBack);
     }
 

@@ -134,6 +134,10 @@ MonoBehaviour:
     m_Localized: Opcjonalne
     m_Metadata:
       m_Items: []
+  - m_Id: 17033398566891520
+    m_Localized: Nazwa konfiguracji
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
