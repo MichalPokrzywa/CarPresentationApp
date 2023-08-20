@@ -5,7 +5,6 @@ using System.IO;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
-using static UnityEditor.Progress;
 
 public class PhotoChanger : MonoBehaviour
 {
@@ -63,11 +62,6 @@ public class PhotoChanger : MonoBehaviour
 		Destroy(photo.sprite);
 		this.gameObject.SetActive(false);
 	}
-
-	//IEnumerator LoadAllImages() {
-	//	picturePath = Directory.GetFiles(GlobalVariables.dirPathHigh, "*.jpg");
-	//}
-
 	async void LoadImage(int indexFromFile) {
 		Image item = photo;
 		if (item.sprite != null) {

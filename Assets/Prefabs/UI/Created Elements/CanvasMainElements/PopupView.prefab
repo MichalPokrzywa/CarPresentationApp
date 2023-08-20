@@ -270,8 +270,6 @@ GameObject:
   - component: {fileID: 6506136384704918410}
   - component: {fileID: 6506136384704918411}
   - component: {fileID: 6506136384704918408}
-  - component: {fileID: 1033657167325016389}
-  - component: {fileID: 858421601281494580}
   m_Layer: 5
   m_Name: PopupView
   m_TagString: Untagged
@@ -370,32 +368,6 @@ MonoBehaviour:
   acceptButton: {fileID: 6506136386028405971}
   refuseButton: {fileID: 6506136385884596938}
   exitButton: {fileID: 6506136384191884216}
---- !u!114 &1033657167325016389
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6506136384704918405}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6883a59d9f29f4b4f834a1d827ff636a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &858421601281494580
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6506136384704918405}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1cc9f0f0413c6384a9ab53599f22b1ad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectsToLoad:
-  - {fileID: 1033657167325016389}
 --- !u!1 &6506136384852349815
 GameObject:
   m_ObjectHideFlags: 0

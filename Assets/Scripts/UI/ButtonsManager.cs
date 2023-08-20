@@ -16,6 +16,7 @@ public class ButtonsManager : MonoBehaviour
 		foreach (Transform child in transform) {
 			PanelToggle panelToggle = child.GetComponent<PanelToggle>();
 		    buttons.Add(panelToggle);
+			Debug.Log(panelToggle.toggle);
 		    panelToggle.toggle.isOn = false;
 		    panelToggle.targetImage.sprite = backgroundImage;
 			panelToggle.targetImage.color = color;

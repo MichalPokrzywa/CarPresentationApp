@@ -2,25 +2,21 @@ using Newtonsoft.Json;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using TMPro;
-using UnityEditor.PackageManager.Requests;
 using UnityEngine;
 using UnityEngine.UI;
-using static System.Net.Mime.MediaTypeNames;
 
 public class TestDriveTimeTable : MonoBehaviour {
 	[SerializeField] TMP_Dropdown dateDropdown;
 	[SerializeField] TMP_Dropdown timeDropdown;
 	[SerializeField] TMP_InputField inputField;
 	[SerializeField] Button sendButton;
-
+	[SerializeField] LoadingInformation loadingInformation;
 	ApiRequest api = new ApiRequest();
 	DateConfig dateConfig = null;
 
 	// Start is called before the first frame update
 	async void Start() {
-		LoadingInformation loadingInformation = GetComponent<LoadingInformation>();
 		dateConfig = JsonConvert.DeserializeObject<DateConfig>(await Request.GetAsyncText(GlobalVariables.dateConfig));
 		List<string> date = new List<string>();
 		List<string> date2 = new List<string>();
@@ -28,15 +24,14 @@ public class TestDriveTimeTable : MonoBehaviour {
 			date.Add(day.ToString("dd'/'MM'/'yyyy"));
 		}
 		dateDropdown.AddOptions(date);
-		Debug.Log($"{DateTime.Parse(dateConfig.startDate + " " + dateConfig.startTime)} | {DateTime.Parse(dateConfig.startDate + " " + dateConfig.endTime)}");
 		foreach (DateTime time in EachTime(DateTime.Parse(dateConfig.startDate+" "+ dateConfig.startTime), DateTime.Parse(dateConfig.startDate + " " + dateConfig.endTime))) {
-			Debug.Log(time.ToString("HH:mm"));
 			date2.Add(time.ToString("HH:mm"));
 		}
 		dateDropdown.onValueChanged.AddListener(UpdateHours);
 		timeDropdown.AddOptions(date2);
 		sendButton.onClick.AddListener(AddNewRecord);
 		UpdateHours(0);
+		Debug.Log("adaodb");
 		loadingInformation.SetLoading(true);
 	}
 
@@ -77,9 +72,7 @@ public class TestDriveTimeTable : MonoBehaviour {
 		    from = DateTime.Today + from.TimeOfDay;
 		    thru = DateTime.Today + thru.TimeOfDay;
 	    }
-		Debug.Log($"{from.Date + from.TimeOfDay} | {thru.Date + thru.TimeOfDay}");
-		Debug.Log(from.Date != DateTime.Today);
-		for (DateTime time = from.Date + from.TimeOfDay ; time <= thru.Date + thru.TimeOfDay; time = time.Add(TimeSpan.FromMinutes(30))) {
+	    for (DateTime time = from.Date + from.TimeOfDay ; time <= thru.Date + thru.TimeOfDay; time = time.Add(TimeSpan.FromMinutes(30))) {
 
 			if (from.Date != DateTime.Today) {
 				yield return time;

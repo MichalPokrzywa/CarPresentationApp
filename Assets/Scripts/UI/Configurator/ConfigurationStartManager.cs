@@ -25,11 +25,10 @@ public class ConfigurationStartManager : MonoBehaviour {
 			}
 		}
 		createButton.onClick.AddListener(CreateNewConfiguration);
-		Debug.Log(loadingInformation);
 		if (!loadingInformation.CheckLoading()) {
+			Debug.Log(loadingInformation.CheckLoading());
 			loadingInformation.SetLoading(true);
 		}
-		
     }
     void CreateNewConfiguration() {
 	    GameObject newConfig = Instantiate(configurationObject, configurationList.transform);

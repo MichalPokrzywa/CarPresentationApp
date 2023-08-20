@@ -41,8 +41,8 @@ public class SplashScreen : MonoBehaviour {
 	Texture2D SmallTexture(Texture2D tex) {
 		Texture2D result = new Texture2D(385, 250, tex.format, true);
 		Color[] rpixels = result.GetPixels(0);
-		float incX = (1.0f / (float)385);
-		float incY = (1.0f / (float)250);
+		float incX = (1.0f / 385f);
+		float incY = (1.0f / 250f);
 		for (int px = 0; px < rpixels.Length; px++) {
 			rpixels[px] = tex.GetPixelBilinear(incX * ((float)px % 385), incY * ((float)Mathf.Floor(px / 385)));
 		}
@@ -62,7 +62,7 @@ public class SplashScreen : MonoBehaviour {
 			Debug.Log("Error .. " + w.error);
 		}
 		else {
-			//Retrieve results as binary data
+
 			byte[] results = w.downloadHandler.data;
 			string[] fileNames = System.Text.Encoding.Default.GetString(results).Split('\n');
 			for (int i = 0; i < fileNames.Length; i++) {

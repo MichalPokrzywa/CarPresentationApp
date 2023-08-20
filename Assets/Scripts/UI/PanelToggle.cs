@@ -5,13 +5,14 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class PanelToggle : MonoBehaviour {
-	public Toggle toggle { get; set; }
+	[SerializeField] public Toggle toggle;
 	[SerializeField] public Image image;
 	[SerializeField] public GameObject view;
-	public Image targetImage { get; set; }
-	void Start()
-    {
-	    toggle = GetComponent<Toggle>();
+	[SerializeField] public Image targetImage;
+	void Start() {
+		if (toggle == null) {
+			toggle = GetComponent<Toggle>();
+		}
 		targetImage = toggle.targetGraphic.GetComponent<Image>();
     }
 	public IEnumerator DoFadeUp() {

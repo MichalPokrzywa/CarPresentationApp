@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,6 +13,7 @@ public class GalleryOverview : MonoBehaviour {
 	[SerializeField] GameObject tumbnail;
 	[SerializeField] float cellWidth = 385;
 	[SerializeField] float cellHight = 250;
+	List<Tumbnail> thumbnails = new List<Tumbnail>();
     // Start is called before the first frame update
 
     void Awake() {
@@ -22,13 +24,30 @@ public class GalleryOverview : MonoBehaviour {
 		    _instance = this;
 	    }
     }
+	//information: The first sprite created is going missing and can't override by any other image
 	public IEnumerator LoadImage(Texture2D photo,int index) {
 
 		Instantiate(tumbnail, imageContainer.transform);
 		Sprite sprite = Sprite.Create(photo, new Rect(0, 0, photo.width, photo.height), Vector2.one * 0.5f);
-		Debug.Log(sprite);
-		tumbnail.GetComponent<Image>().sprite = sprite;
-		tumbnail.GetComponent<Tumbnail>().index = index;
+		Tumbnail component = tumbnail.GetComponent<Tumbnail>();
+		component.image.sprite = sprite;
+		component.index = index;
+		component.UpdateSprite(sprite);
+		thumbnails.Add(component);
+		Debug.Log(thumbnails.Count);
+		Debug.Log(component.index);
 		yield return null;
     }
+
+	public IEnumerator UpdateImage(Texture2D photo, int index) {
+		//Debug.Log(thumbnails[^1].GetComponent<Image>().sprite.name);
+		Sprite sprite = Sprite.Create(photo, new Rect(0, 0, photo.width, photo.height), Vector2.one * 0.5f);
+		thumbnails[index].image.sprite = sprite;
+		//Debug.Log(thumbnails[^1].GetComponent<Image>().sprite.name);
+		yield return null;
+	}
+
+	public void ClosePhoto(int index) {
+		thumbnails[index].gameObject.SetActive(false);
+	}
 }

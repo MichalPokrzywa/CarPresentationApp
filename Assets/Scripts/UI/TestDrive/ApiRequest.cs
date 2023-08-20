@@ -1,9 +1,6 @@
 using Cysharp.Threading.Tasks;
 using Newtonsoft.Json;
-using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.PackageManager.Requests;
-using UnityEngine;
 
 public class ApiRequest {
 

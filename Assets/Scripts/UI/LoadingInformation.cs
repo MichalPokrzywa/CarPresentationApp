@@ -10,7 +10,8 @@ public class LoadingInformation : MonoBehaviour
 	    isLoaded = false;
     }
 
-    public void SetLoading(bool check) {
+    public async void SetLoading(bool check) {
+	    
 		isLoaded = check;
     }
     public bool CheckLoading() {
