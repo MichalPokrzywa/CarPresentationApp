@@ -31,7 +31,6 @@ public class TestDriveTimeTable : MonoBehaviour {
 		timeDropdown.AddOptions(date2);
 		sendButton.onClick.AddListener(AddNewRecord);
 		UpdateHours(0);
-		Debug.Log("adaodb");
 		loadingInformation.SetLoading(true);
 	}
 
@@ -84,11 +83,7 @@ public class TestDriveTimeTable : MonoBehaviour {
 	}
 
     async void AddNewRecord() {
-
-		Debug.Log(dateDropdown.options[dateDropdown.value].text.Replace('/','-'));
-		Debug.Log(timeDropdown.options[timeDropdown.value].text.Replace(":",string.Empty));
-		Debug.Log(inputField.text);
-		if (inputField.text == String.Empty) {
+	    if (inputField.text == String.Empty) {
 			await api.AddRecord($"{dateDropdown.options[dateDropdown.value].text.Replace('/', '-')}{timeDropdown.options[timeDropdown.value].text.Replace(":", string.Empty)}", timeDropdown.options[timeDropdown.value].text.Replace(":", string.Empty),
 				dateDropdown.options[dateDropdown.value].text.Replace('/', '-'));
 		}

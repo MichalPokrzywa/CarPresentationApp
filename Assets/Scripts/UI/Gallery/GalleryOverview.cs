@@ -24,8 +24,7 @@ public class GalleryOverview : MonoBehaviour {
 		    _instance = this;
 	    }
     }
-	//information: The first sprite created is going missing and can't override by any other image
-	public IEnumerator LoadImage(Texture2D photo,int index) {
+    public IEnumerator LoadImage(Texture2D photo,int index) {
 
 		GameObject newGameObject = Instantiate(tumbnail, imageContainer.transform);
 		Sprite sprite = Sprite.Create(photo, new Rect(0, 0, photo.width, photo.height), Vector2.one * 0.5f);
@@ -34,16 +33,12 @@ public class GalleryOverview : MonoBehaviour {
 		component.index = index;
 		component.UpdateSprite(sprite);
 		thumbnails.Add(component);
-		Debug.Log(thumbnails.Count);
-		Debug.Log(component.index);
 		yield return null;
     }
 
 	public IEnumerator UpdateImage(Texture2D photo, int index) {
-		//Debug.Log(thumbnails[^1].GetComponent<Image>().sprite.name);
 		Sprite sprite = Sprite.Create(photo, new Rect(0, 0, photo.width, photo.height), Vector2.one * 0.5f);
 		thumbnails[index].image.sprite = sprite;
-		//Debug.Log(thumbnails[^1].GetComponent<Image>().sprite.name);
 		yield return null;
 	}
 

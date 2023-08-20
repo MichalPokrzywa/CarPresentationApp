@@ -29,7 +29,6 @@ public class ConfigurationStartManager : MonoBehaviour {
 		}
 		createButton.onClick.AddListener(CreateNewConfiguration);
 		if (!loadingInformation.CheckLoading()) {
-			Debug.Log(loadingInformation.CheckLoading());
 			loadingInformation.SetLoading(true);
 		}
     }

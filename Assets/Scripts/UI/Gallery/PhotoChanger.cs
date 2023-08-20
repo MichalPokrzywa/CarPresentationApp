@@ -28,8 +28,7 @@ public class PhotoChanger : MonoBehaviour
 		}
 	}
 	void Start() {
-		picturePath = Directory.GetFiles(GlobalVariables.dirPathHigh, "*.jpg");	
-		Debug.Log(picturePath.Length);
+		picturePath = Directory.GetFiles(GlobalVariables.dirPathHigh, "*.jpg");
 		nextButton.onClick.AddListener(MoveForward);
 		previousButton.onClick.AddListener(MoveBackward);
 		backButton.onClick.AddListener(Close);
