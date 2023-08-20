@@ -48,6 +48,7 @@ public class TestDriveList : MonoBehaviour {
 			Destroy(child.gameObject);
 		}
 		await CreateRecords();
+		UpdateRecords(dateDropdown.value);
 		StartCoroutine(EndLoader());
 	}
 

@@ -13,6 +13,7 @@ public class OutsideCameraRotation : MonoBehaviour {
 	[SerializeField] float minZoom = 4.1f;
 	[SerializeField] float maxZooms = 5.9f;
 	[SerializeField] float zoomSpeed = 50f;
+	[SerializeField] private bool rotateAfterRelease = false;
 	float lastPolar;
 	float polar;  // Polar angle
 	float elevation;    // Azimuthal angle
@@ -34,7 +35,7 @@ public class OutsideCameraRotation : MonoBehaviour {
 			RotateCameraAround();
 			CalculateNextPosition();
 		}
-		if (lastPolar != 0 && !inputManager.DetectMovement() && !inputManager.isIdle) {
+		if (lastPolar != 0 && !inputManager.DetectMovement() && !inputManager.isIdle & rotateAfterRelease) {
 			transform.position = Vector3.SmoothDamp(transform.position, car.position + cartesianCoordsNextPosition, ref velocity, 1f);
 		}
 		transform.LookAt(car);

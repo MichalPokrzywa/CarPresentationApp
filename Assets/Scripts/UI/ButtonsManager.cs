@@ -48,6 +48,12 @@ public class ButtonsManager : MonoBehaviour
 		}
     }
 
+    public void ReturnToBasicView() {
+	    activeToggle.toggle.isOn = false;
+	    buttons[0].toggle.isOn = true;
+		activeToggle = buttons[0];
+	}
+
     void TurnOffButtons() {
 	    foreach (PanelToggle button in buttons) {
 		    button.toggle.interactable = false;
