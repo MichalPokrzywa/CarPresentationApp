@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -67,7 +68,11 @@ public class PhotoChanger : MonoBehaviour
 		if (item.sprite != null) {
 			Destroy(item.sprite);
 		}
-		texture = await Request.GetAsyncTexture(picturePath[indexFromFile]);
+		//Error with UnityWebRequest - Temporary Solution
+		//Stoped working when project crash unity 
+		byte[] bytes = File.ReadAllBytes(picturePath[indexFromFile]);
+		texture = new Texture2D(2, 1);
+		texture.LoadImage(bytes);
 		int originalWidth = texture.width;
 		int originalHeight = texture.height;
 		Sprite sprite = Sprite.Create(texture, new Rect(0, 0, originalWidth, originalHeight), Vector2.one * 0.5f);

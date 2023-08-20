@@ -32,12 +32,12 @@ public class ConfigurationSavedElement : MonoBehaviour {
     }
     public void SaveJsonFile() {
 	    string formattedString = DateTime.SpecifyKind(DateTime.Now, DateTimeKind.Local).ToString("yyyyMMddHHmmss");
-		string filePath = Path.Combine(Application.persistentDataPath, $"{formattedString}.json");
+		string filePath = Path.Combine(GlobalVariables.configFolder, $"{formattedString}.json");
 	    File.WriteAllText(filePath, JsonConvert.SerializeObject(configurationSave));
 	}
 
     public void UpdateJsonFile() {
-	    string filePath = Path.Combine(Application.persistentDataPath, saveFileName);
+	    string filePath = Path.Combine(GlobalVariables.configFolder, saveFileName);
 	    File.WriteAllText(filePath, JsonConvert.SerializeObject(configurationSave));
 	}
 }

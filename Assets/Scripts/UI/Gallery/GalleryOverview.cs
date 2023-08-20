@@ -27,9 +27,9 @@ public class GalleryOverview : MonoBehaviour {
 	//information: The first sprite created is going missing and can't override by any other image
 	public IEnumerator LoadImage(Texture2D photo,int index) {
 
-		Instantiate(tumbnail, imageContainer.transform);
+		GameObject newGameObject = Instantiate(tumbnail, imageContainer.transform);
 		Sprite sprite = Sprite.Create(photo, new Rect(0, 0, photo.width, photo.height), Vector2.one * 0.5f);
-		Tumbnail component = tumbnail.GetComponent<Tumbnail>();
+		Tumbnail component = newGameObject.GetComponent<Tumbnail>();
 		component.image.sprite = sprite;
 		component.index = index;
 		component.UpdateSprite(sprite);

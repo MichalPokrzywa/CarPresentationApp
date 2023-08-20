@@ -8,8 +8,8 @@ public class InputManager : MonoBehaviour
 	public static InputManager instance => _instance;
 
 	[SerializeField] float simulateAxisValue = 0.5f;
+	[SerializeField] float touchSensitivity = 1.0f;
 	public bool isIdle;
-
 	void Awake() {
 		if (_instance != null && _instance != this) {
 			Destroy(gameObject);
@@ -30,21 +30,21 @@ public class InputManager : MonoBehaviour
 	    if (isIdle) {
 		    return simulateAxisValue;
 	    }
-	    if (Input.GetMouseButton(0)) {
-		    return Input.GetAxis("Mouse X");
-	    }
-	    if (Input.touchCount > 0) {
-		    return Input.touches[0].deltaPosition.x;
+		if (Input.GetMouseButton(0)) {
+			return Input.GetAxis("Mouse X");
+		}
+		if (Input.touchCount > 0) {
+		    return Input.touches[0].deltaPosition.y * touchSensitivity;
 	    }
 	    return 0;
     }
     public float GetYAxis() {
-	    if (Input.GetMouseButton(0)) {
-		    return Input.GetAxis("Mouse Y");
-	    }
-	    if (Input.touchCount > 0) {
-		    return Input.touches[0].deltaPosition.y;
-	    }
+		if (Input.GetMouseButton(0)) {
+			return Input.GetAxis("Mouse Y");
+		}
+		if (Input.touchCount > 0) {
+			return Input.touches[0].deltaPosition.y * touchSensitivity;
+		}
 	    return 0;
     }
 

@@ -14,7 +14,10 @@ public class ConfigurationStartManager : MonoBehaviour {
 	void Start()
     {
 		LoadingInformation loadingInformation = GetComponent<LoadingInformation>();
-		foreach (string fileName in Directory.GetFiles(Application.persistentDataPath, "*.json")) {
+		if (!Directory.Exists(GlobalVariables.configFolder)) {
+			Directory.CreateDirectory(GlobalVariables.configFolder);
+		}
+		foreach (string fileName in Directory.GetFiles(GlobalVariables.configFolder, "*.json")) {
 			GameObject newConfig = Instantiate(configurationObject, configurationList.transform);
 			using (StreamReader r = new StreamReader(fileName)) {
 				string json = r.ReadToEnd();

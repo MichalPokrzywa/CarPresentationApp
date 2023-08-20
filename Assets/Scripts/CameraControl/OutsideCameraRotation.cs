@@ -35,7 +35,6 @@ public class OutsideCameraRotation : MonoBehaviour {
 			CalculateNextPosition();
 		}
 		if (lastPolar != 0 && !inputManager.DetectMovement() && !inputManager.isIdle) {
-			//smooth time as input speed
 			transform.position = Vector3.SmoothDamp(transform.position, car.position + cartesianCoordsNextPosition, ref velocity, 1f);
 		}
 		transform.LookAt(car);

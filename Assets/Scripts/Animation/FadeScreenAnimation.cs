@@ -14,16 +14,18 @@ public class FadeScreenAnimation : MonoBehaviour {
 	[SerializeField] float startTime = 0f;
 
 	void Start() {
-		blackScreen = GetComponent<Image>();
+		//blackScreen = GetComponent<Image>();
+		//Debug.Log(_instance);
 	}
-	private void Awake() {
-		if (_instance != null && _instance != this) {
-			Destroy(gameObject);
-		}
-		else {
-			_instance = this;
-		}
-	}
+	//private void Awake() {
+	//	if (_instance != null && _instance != this) {
+	//		Destroy(gameObject);
+	//		_instance = this;
+	//	}
+	//	else {
+	//		_instance = this;
+	//	}
+	//}
 	public void DoFadeUp() {
 		blackScreen.DOFade(255, timeScale).SetEase(Ease.InSine);
 	}

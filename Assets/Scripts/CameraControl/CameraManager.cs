@@ -6,8 +6,10 @@ public class CameraManager : MonoBehaviour {
 	int currentCamera = 0;
 	bool wait = false;
 	List<Transform> sceneCameras;
+
+	[SerializeField] FadeScreenAnimation anim;
 	// Start is called before the first frame update
-    void Start()
+	void Start()
     {
 		sceneCameras = new List<Transform>();
 	    foreach (Transform child in transform) {
@@ -21,7 +23,7 @@ public class CameraManager : MonoBehaviour {
     }
 
     IEnumerator ChangeCamera() {
-	    FadeScreenAnimation anim = FadeScreenAnimation.instance;
+	    //FadeScreenAnimation anim = FadeScreenAnimation.instance;
 		yield return StartCoroutine(anim.Animation(true));
 		sceneCameras[currentCamera].gameObject.SetActive(false);
 	    currentCamera++;

@@ -17,7 +17,7 @@ public class TestDriveTimeTable : MonoBehaviour {
 
 	// Start is called before the first frame update
 	async void Start() {
-		dateConfig = JsonConvert.DeserializeObject<DateConfig>(await Request.GetAsyncText(GlobalVariables.dateConfig));
+		dateConfig = JsonConvert.DeserializeObject<DateConfig>(Resources.Load<TextAsset>("jsonviewer").text); 
 		List<string> date = new List<string>();
 		List<string> date2 = new List<string>();
 		foreach (DateTime day in EachDay(DateTime.Parse(dateConfig.startDate), DateTime.Parse(dateConfig.endDate))) {

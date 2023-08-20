@@ -1,4 +1,4 @@
-using System;
+using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -10,10 +10,9 @@ public class GalleryManager : MonoBehaviour {
 	GalleryOverview gallery;
 	private string[] photoFiles;
 	async void Start() {
-		photoFiles = System.IO.Directory.GetFiles(GlobalVariables.dirPathLow, "*.jpg");
+		photoFiles = Directory.GetFiles(GlobalVariables.dirPathLow, "*.jpg");
 		gallery = GalleryOverview.instance;
-		photosList = new List<Texture2D>();
-		//await AddImages(photoFiles);
+		photosList = new List<Texture2D>(); 
 		StartCoroutine(AddImages(photoFiles));
 	}
 
@@ -21,18 +20,12 @@ public class GalleryManager : MonoBehaviour {
 		return photosList[index];
 	}
 	IEnumerator AddImages(string[] fileNames) {
-		for (int i = 0; i < fileNames.Length; i++) {
-			UnityWebRequest uwr = UnityWebRequestTexture.GetTexture(fileNames[i]);
-			yield return uwr.SendWebRequest();
+		for (int i = 0; i < fileNames.Length; i++) { ;
 			Debug.Log(photoFiles[i]);
-			if (uwr.result == UnityWebRequest.Result.Success) {
-				Texture2D texture = DownloadHandlerTexture.GetContent(uwr);
-				photosList.Add(texture);
-				yield return StartCoroutine(gallery.LoadImage(texture, i));
-			}
-			else {
-				Debug.LogError("Error downloading image: " + uwr.error);
-			}
+			byte [] bytes = File.ReadAllBytes(fileNames[i]);
+			Texture2D texture = new Texture2D(2, 2);
+			texture.LoadImage(bytes);
+			yield return StartCoroutine(gallery.LoadImage(texture, i));
 		}
 		GetComponent<LoadingInformation>().SetLoading(true);
 	}
