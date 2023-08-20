@@ -48,7 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToTimeout: 60
   idle: 0
-  splash: {fileID: 90405182565275300, guid: b93a1d3e35d337e4e90e73fa44343304, type: 3}
+  splash: {fileID: 0}
 --- !u!114 &1044671726008354100
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61,7 +61,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9151fc62c5d229340867c84b70c22d72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvas: {fileID: 8784595238021791714, guid: e9adea1e755dadd4d98a59efc616eeaa, type: 3}
+  canvas: {fileID: 0}
   timeScale: 1
 --- !u!114 &1044671726008354103
 MonoBehaviour:

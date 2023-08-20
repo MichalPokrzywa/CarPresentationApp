@@ -19,7 +19,6 @@ public class CameraManager : MonoBehaviour {
 
     public void NextCamera() {
 	    StartCoroutine(ChangeCamera());
-
     }
 
     IEnumerator ChangeCamera() {
@@ -34,6 +33,10 @@ public class CameraManager : MonoBehaviour {
 
 		yield return StartCoroutine(anim.Animation(false));
 		yield return null;
+    }
+
+    public Camera GetCamera() {
+	    return sceneCameras[currentCamera].GetComponent<Camera>();
     }
 
 }

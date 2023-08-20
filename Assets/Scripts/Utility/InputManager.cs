@@ -34,7 +34,12 @@ public class InputManager : MonoBehaviour
 			return Input.GetAxis("Mouse X");
 		}
 		if (Input.touchCount > 0) {
-		    return Input.touches[0].deltaPosition.y * touchSensitivity;
+			foreach (Touch touch in Input.touches) {
+				if (touch.phase == TouchPhase.Moved) {
+					return Input.touches[0].deltaPosition.x * touchSensitivity;
+				}
+			}
+		    
 	    }
 	    return 0;
     }
@@ -43,7 +48,11 @@ public class InputManager : MonoBehaviour
 			return Input.GetAxis("Mouse Y");
 		}
 		if (Input.touchCount > 0) {
-			return Input.touches[0].deltaPosition.y * touchSensitivity;
+			foreach (Touch touch in Input.touches) {
+				if (touch.phase == TouchPhase.Moved) {
+					return Input.touches[0].deltaPosition.y * touchSensitivity;
+				}
+			}
 		}
 	    return 0;
     }
@@ -68,4 +77,5 @@ public class InputManager : MonoBehaviour
 	    }
 	    return 0;
     }
+
 }

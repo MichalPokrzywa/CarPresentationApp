@@ -20,8 +20,7 @@ public class GalleryManager : MonoBehaviour {
 		return photosList[index];
 	}
 	IEnumerator AddImages(string[] fileNames) {
-		for (int i = 0; i < fileNames.Length; i++) { ;
-			Debug.Log(photoFiles[i]);
+		for (int i = 0; i < fileNames.Length; i++) {
 			byte [] bytes = File.ReadAllBytes(fileNames[i]);
 			Texture2D texture = new Texture2D(2, 2);
 			texture.LoadImage(bytes);

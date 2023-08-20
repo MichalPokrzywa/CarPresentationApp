@@ -67,7 +67,6 @@ public class OutsideCameraRotation : MonoBehaviour {
 		}
 		radius = Mathf.Clamp(radius, minZoom, maxZooms);
 		elevation = Mathf.Clamp(elevation, minY, maxY);
-		//Debug.Log($"mouse input: {Input.GetAxis("Mouse X")} | elevation:{elevation} | polar:{polar} | lastPolar:{lastPolar} | radius:{radius}");
 		MathUtylity.SphericalToCartesian(radius, polar, elevation, out cartesianCoords);
 		transform.position = car.position + cartesianCoords;
 	}

@@ -13,19 +13,6 @@ public class FadeScreenAnimation : MonoBehaviour {
 	[SerializeField] public float timeScale = 3f;
 	[SerializeField] float startTime = 0f;
 
-	void Start() {
-		//blackScreen = GetComponent<Image>();
-		//Debug.Log(_instance);
-	}
-	//private void Awake() {
-	//	if (_instance != null && _instance != this) {
-	//		Destroy(gameObject);
-	//		_instance = this;
-	//	}
-	//	else {
-	//		_instance = this;
-	//	}
-	//}
 	public void DoFadeUp() {
 		blackScreen.DOFade(255, timeScale).SetEase(Ease.InSine);
 	}

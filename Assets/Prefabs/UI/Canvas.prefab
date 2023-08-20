@@ -230,6 +230,17 @@ PrefabInstance:
       objectReference: {fileID: 8784595239347723453}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 204785ea6faf57b45837f9f162ffb1aa, type: 3}
+--- !u!114 &8784595239006018463 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6104011718592523140, guid: 204785ea6faf57b45837f9f162ffb1aa, type: 3}
+  m_PrefabInstance: {fileID: 3268743078685306907}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66647e8b27672d0489e8b912579cef3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &8784595239592373712 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6104011718003809739, guid: 204785ea6faf57b45837f9f162ffb1aa, type: 3}
@@ -330,6 +341,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: ViewGroup
       objectReference: {fileID: 0}
+    - target: {fileID: 2863907309299734867, guid: dc72ddb06856fb140b54e977f33ad14b, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2863907309299734867, guid: dc72ddb06856fb140b54e977f33ad14b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 8784595239006018463}
     - target: {fileID: 2863907309952162386, guid: dc72ddb06856fb140b54e977f33ad14b, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -553,6 +572,10 @@ PrefabInstance:
     - target: {fileID: 90405182565275300, guid: b93a1d3e35d337e4e90e73fa44343304, type: 3}
       propertyPath: m_Name
       value: SplashScreen
+      objectReference: {fileID: 0}
+    - target: {fileID: 90405182565275300, guid: b93a1d3e35d337e4e90e73fa44343304, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 90405182565275301, guid: b93a1d3e35d337e4e90e73fa44343304, type: 3}
       propertyPath: m_Pivot.x

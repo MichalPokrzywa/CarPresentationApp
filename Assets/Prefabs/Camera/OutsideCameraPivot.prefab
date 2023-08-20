@@ -104,6 +104,7 @@ MonoBehaviour:
   minZoom: 4.1
   maxZooms: 5.9
   zoomSpeed: 50
+  rotateAfterRelease: 0
 --- !u!1 &9111863773566830530
 GameObject:
   m_ObjectHideFlags: 0
@@ -267,4 +268,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37736186240e6b54399f70065f670fd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 1742936571028992749, guid: b91e1e45280074243a0ca4e18f7ba24f, type: 3}
+  anim: {fileID: 0}
